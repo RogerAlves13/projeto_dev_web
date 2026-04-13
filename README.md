@@ -1,39 +1,36 @@
 # projeto_dev_web
 
-#Projeto voltado para para desenvolvimento web - 5° Semestre
 
 ## Integrantes
 
-João Arthur Alves de Oliveira 
-RA: 924107841
+João Arthur Alves de Oliveira  
+RA: 924107841  
 
-Layza Fernandes Silva
- RA: 924104679
+Layza Fernandes Silva  
+RA: 924104679  
 
-Roger Henrique Alves Campos
- RA: 924100757
+Roger Henrique Alves Campos  
+RA: 924100757  
 
+Vinicius Soares Barbosa  
+RA: 924202197  
 
-Vinicius Soares Barbosa 
- RA: 924202197
+Vitoria Cristina Antonio Dias  
+RA: 1726108233  
 
-Vitoria Cristina Antonio Dias
- RA: 1726108233
+Ruan Ferreira Silva  
+RA: 924103220  
 
-RUAN FERREIRA SILVA
-RA: 924103220
+Kathlyn Faustina de Paula Souza  
+RA: 924104900  
 
-KATHLYN FAUSTINA DE PAULA SOUZA
-RA: 924104900
+Alyce Mota da Silva  
+RA: 424107553  
 
-ALYCE MOTA DA SILVA
-RA: 424107553
-
-JOÃO VITOR CAPORRINO SOUZA
-RA: 924100660
-
-
-##  Instruções de uso
+João Vitor Caporrino Souza  
+RA: 924100660  
 
 
-##  Descrição
+## Instruções de uso
+
+## Descrição
