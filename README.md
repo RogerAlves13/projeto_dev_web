@@ -34,3 +34,7 @@ RA: 924100660
 ## Instruções de uso
 
 ## Descrição
+Atualmente na cidade de São Paulo, a população enfrenta diversos desafios relacionados ao transporte público como superlotação, condições climáticas adversas e a quantidade de veículos disponíveis, fatores que impactam diretamente no tempo e na qualidade dos deslocamentos diários. 
+
+Diante desse cenário, surge a Perseus, uma plataforma web, com o intuíto de expansão para dispositivos móveis, que tem como objetivo oferecer uma visualização detalhada dos trajetos que serão realizados pelos usuários. A aplicação permitirá consultar informações como condições climáticas baseadas na localização (com possibilidade de busca por outras regiões), cálculo de rotas, nível de lotação dos transportes públicos (como trens, metrôs e ônibus), além de dados sobre o trajeto, incluindo trânsito, acidentes e sinalizações, centralizando informações relevantes em um único ambiente, contribuindo para uma melhor tomada de decisão por parte dos usuários. 
+
