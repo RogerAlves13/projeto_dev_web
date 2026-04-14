@@ -1,0 +1,11 @@
+li{
+    display: inline;
+}
+img{
+    width: 50%;
+    height: 50%;
+}
+card{
+    display: inline-block;
+    background-color: #000000;
+}
