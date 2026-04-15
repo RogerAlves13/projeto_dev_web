@@ -3,7 +3,9 @@
 
 ## Integrantes
 
-Alyce Mota da Silva - RA: 424107553 
+Alyce Mota da Silva - RA: 424107553
+
+Everton da Fonseca Durães - RA: 1726109293
 
 Gabriel Ferreira De Lima - RA: 924112094 
 
