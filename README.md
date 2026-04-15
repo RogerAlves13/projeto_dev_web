@@ -3,8 +3,7 @@
 
 ## Integrantes
 
-Alyce Mota da Silva 
-RA: 424107553 
+Alyce Mota da Silva \nRA: 424107553 
 
 Gabriel Ferreira De Lima 
 RA: 924112094 
