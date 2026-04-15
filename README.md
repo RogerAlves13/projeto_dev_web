@@ -3,34 +3,25 @@
 
 ## Integrantes
 
-Alyce Mota da Silva \nRA: 424107553 
+Alyce Mota da Silva - RA: 424107553 
 
-Gabriel Ferreira De Lima 
-RA: 924112094 
+Gabriel Ferreira De Lima - RA: 924112094 
 
-João Arthur Alves de Oliveira 
-RA: 924107841 
+João Arthur Alves de Oliveira - RA: 924107841 
 
-João Vitor Caporrino Souza 
-RA: 92410060 
+João Vitor Caporrino Souza - RA: 92410060 
 
-Kathlyn Faustina de Paula Souza 
-RA: 924104900 
+Kathlyn Faustina de Paula Souza - RA: 924104900 
 
-Layza Fernandes Silva 
-RA: 924104679 
+Layza Fernandes Silva - RA: 924104679 
 
-Roger Henrique Alves Campos 
-RA: 924100757 
+Roger Henrique Alves Campos - RA: 924100757 
 
-Ruan Ferreira Silva 
-RA: 924103220 
+Ruan Ferreira Silva - RA: 924103220 
 
-Vinícius Soares Barbosa 
-RA: 924202197 
+Vinícius Soares Barbosa - RA: 924202197 
 
-Vitoria Antonio Dias 
-RA: 1726108233 
+Vitoria Antonio Dias - RA: 1726108233 
 
 ## Instruções de uso
 
