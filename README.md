@@ -5,8 +5,6 @@
 
 Alyce Mota da Silva - RA: 424107553
 
-Everton da Fonseca Durães - RA: 1726109293
-
 Gabriel Ferreira De Lima - RA: 924112094 
 
 João Arthur Alves de Oliveira - RA: 924107841 
