@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Perseus</title>
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#ffffff;
+color:#222;
+}
+
+
+/* =========================
+NAVBAR
+========================= */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 60px;
+background:white;
+border-bottom:1px solid #eee;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:22px;
+font-weight:bold;
+color:#b8962e;
+}
+
+.logo-icon{
+width:34px;
+height:34px;
+border-radius:50%;
+background:linear-gradient(135deg,#d4af37,#b8962e);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-weight:bold;
+}
+
+.nav-actions{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.download-btn{
+padding:8px 16px;
+border-radius:20px;
+border:1px solid #d4af37;
+background:white;
+color:#b8962e;
+cursor:pointer;
+transition:0.3s;
+}
+
+.download-btn:hover{
+background:#d4af37;
+color:white;
+}
+
+
+/* =========================
+SEARCH BAR
+========================= */
+
+.search-container{
+display:flex;
+justify-content:center;
+margin-top:30px;
+}
+
+.search-box{
+display:flex;
+align-items:center;
+gap:10px;
+padding:10px;
+border-radius:40px;
+box-shadow:0 6px 20px rgba(0,0,0,0.1);
+background:white;
+width:700px;
+}
+
+.input{
+flex:1;
+padding:12px;
+border:none;
+outline:none;
+font-size:15px;
+}
+
+.search-btn{
+width:50px;
+height:50px;
+border-radius:50%;
+border:none;
+background:#d4af37;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+margin-top:40px;
+background:linear-gradient(120deg,#d4af37,#b8962e);
+padding:80px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+}
+
+.hero-text{
+max-width:500px;
+}
+
+.hero-text h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.hero-text p{
+font-size:18px;
+margin-bottom:20px;
+}
+
+.hero-btn{
+padding:12px 26px;
+border-radius:25px;
+border:none;
+background:white;
+color:#b8962e;
+font-weight:bold;
+cursor:pointer;
+}
+
+
+/* =========================
+PHONE MOCKUP
+========================= */
+
+.phone{
+width:260px;
+height:480px;
+background:white;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+padding:20px;
+color:#333;
+}
+
+.card{
+margin-top:20px;
+padding:15px;
+border-radius:10px;
+background:#f7f7f7;
+}
+
+.payment{
+margin-top:20px;
+background:#d4af37;
+color:white;
+padding:12px;
+border-radius:20px;
+text-align:center;
+font-weight:bold;
+}
+
+
+/* =========================
+RESPONSIVO
+========================= */
+
+@media (max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+gap:40px;
+}
+
+.search-box{
+width:90%;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+NAVBAR
+========================= -->
+
+<div class="navbar">
+
+<div class="logo">
+<div class="logo-icon">P</div>
+Perseus
+</div>
+
+<div class="nav-actions">
+<span>São Paulo e Região</span>
+<button class="download-btn">Baixar o Perseus</button>
+</div>
+
+</div>
+
+
+
+<!-- =========================
+BARRA DE BUSCA
+========================= -->
+
+<div class="search-container">
+
+<div class="search-box">
+
+<input 
+id="origem"
+type="text"
+class="input"
+placeholder="Escolha o local de partida"
+/>
+
+<input
+id="destino"
+type="text"
+class="input"
+placeholder="Escolha o destino"
+/>
+
+<button 
+class="search-btn"
+onclick="buscar()"
+title="Buscar rota"
+>
+🔍
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+HERO
+========================= -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Planeje suas viagens com o Perseus</h1>
+
+<p>
+Encontre rotas, transporte público e recarregue seus cartões
+em um único aplicativo.
+</p>
+
+<button class="hero-btn">Usar o App</button>
+
+</div>
+
+
+
+<div class="phone">
+
+<h3>Minhas passagens</h3>
+
+<div class="card">
+
+<strong>Cartão principal</strong>
+
+<p>Usuário Perseus</p>
+
+<p>Número: 89491830</p>
+
+</div>
+
+<div class="payment">
+Pagamento
+</div>
+
+</div>
+
+</section>
+
+
+
+<script>
+
+/*
+Função responsável por buscar rota
+futuramente conectará com a API
+*/
+
+function buscar(){
+
+const origem = document.getElementById("origem").value
+const destino = document.getElementById("destino").value
+
+// validação simples
+if(origem === "" || destino === ""){
+
+alert("Preencha origem e destino")
+
+return
+
+}
+
+// teste inicial
+alert("Buscando rota de " + origem + " até " + destino)
+
+/*
+FUTURO: chamada da API
+
+fetch(`/rota?origem=${origem}&destino=${destino}`)
+.then(res => res.json())
+.then(dados => console.log(dados))
+*/
+
+}
+
+</script>
+
+</body>
+</html>
