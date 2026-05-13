@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Mapa de Paradas</title>
+
+<!-- CSS do Leaflet -->
+<link 
+rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+margin:20px;
+}
+
+#mapa{
+height:500px;
+width:100%;
+margin-top:40px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🚍 Paradas próximas</h1>
+
+<div id="mapa"></div>
+
+<!-- JS do Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+let mapa
+
+//------------------------------------------------
+// ÍCONES PERSONALIZADOS
+//------------------------------------------------
+
+/* ícone do usuário
+const iconeUsuario = L.icon({
+iconUrl: "/imagens/usuario.png",
+iconSize: [35,35],
+iconAnchor: [17,35]
+})
+*/
+
+// ícone de parada
+const iconeParada = L.icon({
+iconUrl: "/imagens/parada.png",
+iconSize: [35,35],
+iconAnchor: [17,35]
+})
+
+//------------------------------------------------
+// FUNÇÃO 1
+// PEGA LOCALIZAÇÃO DO USUÁRIO
+//------------------------------------------------
+
+function pegarLocalizacao(){
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(
+
+function(posicao){
+
+const lat = posicao.coords.latitude
+const lon = posicao.coords.longitude
+
+console.log("Localização:",lat,lon)
+
+iniciarMapa(lat,lon)
+
+buscarParadas(lat,lon)
+
+},
+
+function(){
+
+alert("Não foi possível obter sua localização")
+
+}
+
+)
+
+}else{
+
+alert("Geolocalização não suportada")
+
+}
+
+}
+
+//------------------------------------------------
+// FUNÇÃO 2
+// CRIA O MAPA
+//------------------------------------------------
+
+function iniciarMapa(lat,lon){
+
+mapa = L.map("mapa").setView([lat,lon],15)
+
+L.tileLayer(
+"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+{
+attribution:"© OpenStreetMap"
+}
+).addTo(mapa)
+
+
+///------------------------------------------------
+// localização estilo Google Maps
+//------------------------------------------------
+
+// círculo de precisão
+L.circle([lat, lon], {
+radius: 20, // metros
+color: "#2A93EE",
+fillColor: "#2A93EE",
+fillOpacity: 0.15
+}).addTo(mapa)
+
+
+// bolinha azul central
+L.circleMarker([lat, lon], {
+radius: 8,
+color: "#ffffff",
+weight: 2,
+fillColor: "#2A93EE",
+fillOpacity: 1
+})
+.addTo(mapa)
+.bindPopup("📍 Você está aqui")
+.openPopup()
+
+
+// desenha as rotas
+buscarLinhas()
+
+}
+
+//------------------------------------------------
+// FUNÇÃO 3
+// BUSCA PARADAS
+//------------------------------------------------
+
+async function buscarParadas(lat,lon){
+
+try{
+
+const resposta = await fetch(`/paradas/proximas?lat=${lat}&lon=${lon}`)
+const paradas = await resposta.json()
+
+console.log("Paradas:",paradas)
+
+if(paradas.length === 0){
+alert("Nenhuma parada encontrada")
+return
+}
+
+
+// array que guardará todos os pontos
+const pontos = []
+
+// adiciona localização do usuário
+pontos.push([lat,lon])
+
+
+// cria marcador de cada parada
+paradas.forEach(item=>{
+
+const parada = item.parada
+
+if(!parada.latitude || !parada.longitude){
+console.warn("Parada inválida:", parada)
+return
+}
+
+const linhas = parada.linhas?.join(", ") || "Sem linhas"
+
+L.marker(
+    [parada.latitude, parada.longitude],
+{icon: iconeParada}
+)
+
+.addTo(mapa)
+.bindPopup(`
+<b>🚏 ${parada.nome}</b><br>
+Linhas: ${linhas}<br>
+Distância: ${item.distancia.toFixed(2)} km
+`)
+
+
+// adiciona ao array de pontos
+pontos.push([parada.latitude, parada.longitude])
+
+})
+
+
+// ajusta zoom para mostrar todos os pontos
+mapa.fitBounds(pontos,{
+padding:[50,50]
+})
+
+
+}catch(erro){
+
+console.error("Erro ao buscar paradas:",erro)
+
+}
+
+}
+
+//------------------------------------------------
+// FUNÇÃO 4
+// BUSCA ROTAS DAS LINHAS
+//------------------------------------------------
+
+async function buscarLinhas(){
+
+try{
+
+const resposta = await fetch("/linhas")
+
+const linhas = await resposta.json()
+
+console.log("Linhas:",linhas)
+
+linhas.forEach(linha=>{
+
+L.polyline(linha.rota,{
+color:"blue",
+weight:4
+}).addTo(mapa)
+
+})
+
+}catch(erro){
+
+console.error("Erro ao buscar linhas:",erro)
+
+}
+
+}
+
+//------------------------------------------------
+// INÍCIO DO SISTEMA
+//------------------------------------------------
+
+window.onload = pegarLocalizacao
+
+</script>
+
+</body>
+</html>
