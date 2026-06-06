@@ -1,0 +1,613 @@
+/* Estrutura principal */
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+#app {
+  width: 100%;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Corpo da aplicação */
+
+body {
+
+  overflow-y: auto;
+
+  background: #2e2929;
+}
+
+/* Container principal */
+
+.app 
+{
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* MAPA */
+
+#mapa {
+
+  width: 95%;
+
+  height: 60vh;
+
+  margin: 20px auto;
+
+  border-radius: 24px;
+
+}
+
+/* HEADER */
+
+.topbar {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: 20px auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 24px;
+
+  background: rgba(255,255,255,.92);
+
+  border-radius: 20px;
+}
+
+/* Logo */
+
+.logo {
+  font-size: 1.3rem;
+
+  font-weight: bold;
+
+  color: #f39c12;
+}
+
+/* Menu */
+
+.menu {
+  display: flex;
+
+  gap: 12px;
+}
+
+/* Botões do menu */
+
+.menu button {
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  background: #f39c12;
+
+  color: white;
+
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+/* Hover */
+
+.menu button:hover {
+  transform: scale(1.05);
+}
+
+/* SEARCH */
+
+.search-container {
+
+  width: 92%;
+  max-width: 1100px;
+
+  margin: 20px auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 16px;
+
+  background: rgba(255,255,255,.96);
+
+  border-radius: 24px;
+}
+
+/* =====================================
+   GRUPOS DOS CAMPOS
+===================================== */
+
+.input-group {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex: 1;
+}
+
+.input-wrapper {
+
+  flex: 1;
+}
+
+/* =====================================
+   INPUTS
+===================================== */
+
+.search-container input {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: none;
+  outline: none;
+
+  padding: 16px;
+
+  min-width: 180px;
+
+  border-radius: 14px;
+
+  background: #f3f3f3;
+
+  font-size: 1rem;
+
+  color: #333;
+}
+
+.search-container input::placeholder {
+
+  color: #777;
+}
+
+/* =====================================
+   BOTÃO LOCALIZAÇÃO
+===================================== */
+
+.location-btn {
+
+  border: none;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  background: #1e90ff;
+
+  color: white;
+
+  font-size: 1.2rem;
+
+  transition: 0.2s;
+}
+
+.location-btn:hover {
+
+  transform: scale(1.05);
+}
+
+/* =====================================
+   BOTÃO TROCAR ROTA
+===================================== */
+
+.swap-btn {
+
+  border: none;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  background: #f39c12;
+
+  color: white;
+
+  font-size: 1.3rem;
+
+  transition: 0.2s;
+}
+
+.swap-btn:hover {
+
+  transform: scale(1.05);
+}
+
+/* =====================================
+   BOTÃO BUSCAR
+===================================== */
+
+.search-btn {
+
+  border: none;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  background: #f39c12;
+
+  color: white;
+
+  font-size: 1.2rem;
+
+  transition: 0.2s;
+}
+
+.search-btn:hover {
+
+  transform: scale(1.05);
+}
+
+/* =====================================
+   MARCADOR DO USUÁRIO
+===================================== */
+
+.user-location {
+
+  position: relative;
+
+  width: 28px;
+  height: 28px;
+
+  background: #1e90ff;
+
+  border: 5px solid white;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 15px rgba(30,144,255,0.7);
+  
+  overflow: visible;
+
+}
+
+/* Animação pulsando */
+
+.user-location::after {
+
+  content: '';
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  background: rgba(30,144,255,0.3);
+
+  transform: translate(-50%, -50%);
+
+  animation: pulse 2s infinite;
+
+}
+
+@keyframes pulse {
+
+  0% {
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.5);
+
+    opacity: 1;
+
+  }
+
+  100% {
+
+    transform:
+      translate(-50%, -50%)
+      scale(2);
+
+    opacity: 0;
+
+  }
+
+}
+
+/* =====================================
+   CARD CLIMA
+===================================== */
+
+#clima-card {
+
+  width: 250px;
+
+  padding: 16px;
+
+  background: rgba(255,255,255,0.95);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+}
+
+#clima-card h3 {
+
+  margin-top: 0;
+
+}
+
+#clima-card p,
+#rota-card p {
+
+  line-height: 1.6;
+
+  font-size: 15px;
+}
+
+/* =====================================
+   CARD ROTA
+===================================== */
+
+#rota-card {
+
+  width: 250px;
+
+  padding: 16px;
+
+  background: rgba(255,255,255,0.95);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+}
+
+#rota-card h3 {
+
+  margin-top: 0;
+
+}
+
+#rota-card p {
+
+  margin: 8px 0;
+
+}
+
+#linhas-card {
+
+  flex: 2;
+
+  min-height: 150px;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.bottom-section {
+
+  width: 95%;
+
+  margin: 20px;
+
+  display: flex;
+
+  gap: 20px;
+
+}
+
+#estacao-card {
+
+  flex: 1;
+
+  min-height: 250px;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+}
+
+#estacao-card img {
+
+  width: 100%;
+
+  border-radius: 12px;
+
+}
+
+.side-info {
+
+  position: absolute;
+
+  top: 220px;
+
+  right: 2.5%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  z-index: 1000;
+}
+
+/* =====================================
+   ÍCONE DAS PARADAS DE ÔNIBUS
+===================================== */
+
+.bus-stop-icon {
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  border: 3px solid #f39c12;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.25);
+
+}
+
+.bus-stop-icon span {
+
+  font-size: 22px;
+
+}
+
+/* =====================================
+   LINHAS DISPONÍVEIS
+===================================== */
+
+#lista-linhas {
+
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0;
+}
+
+.linha-item {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.linha-nome {
+
+  font-weight: 500;
+}
+
+.linha-tempo {
+
+  color: #f39c12;
+
+  font-weight: bold;
+}
+
+
+
+@media (max-width: 900px) {
+
+  .search-container {
+
+    flex-direction: column;
+
+    width: 95%;
+  }
+
+  .input-group {
+
+    width: 100%;
+  }
+
+  .input-wrapper {
+
+    width: 100%;
+  }
+
+  .search-container input {
+
+    width: 100%;
+  }
+
+  .swap-btn,
+  .search-btn {
+
+    width: 100%;
+  }
+
+}
+
+/* =====================================
+   DARK MODE
+===================================== */
+body.dark {
+
+  background: #121212;
+
+}
+
+body.dark .topbar,
+body.dark .search-container,
+body.dark #clima-card,
+body.dark #rota-card,
+body.dark #linhas-card,
+body.dark #estacao-card {
+
+  background: #2a2a2a;
+
+  color: white;
+
+}
+
+body.dark input {
+
+  background: #3a3a3a;
+
+  color: white;
+
+}
+
+body.dark input::placeholder {
+
+  color: #bdbdbd;
+
+}

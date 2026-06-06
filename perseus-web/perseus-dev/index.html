@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>w</title>
+  </head>
+  <body>
+  
+  <div id="app">
+
+    <div class="app">
+
+      <header class="topbar">
+
+        <div class="logo">
+          PERSEUS
+        </div>
+
+        <nav class="menu">
+
+          <button>Login</button>
+
+          <button>Baixar App</button>
+
+        </nav>
+
+      </header>
+
+      <div class="search-container">
+
+        <div class="input-group">
+
+          <div class="input-wrapper">
+
+            <input
+              id="origem"
+              type="text"
+              placeholder="Escolha o local de partida">
+
+          </div>
+
+          <button
+            id="minha-localizacao"
+            class="location-btn">
+
+            📍
+
+          </button>
+
+        </div>
+
+        <button
+          id="trocar-rota"
+          class="swap-btn">
+
+          ⇄
+
+        </button>
+
+        <div class="input-group">
+
+          <div class="input-wrapper">
+
+            <input
+              id="destino"
+              type="text"
+              placeholder="Escolha o destino">
+
+          </div>
+
+        </div>
+
+        <button
+          id="buscar"
+          class="search-btn">
+
+          🔍
+
+        </button>
+
+      </div>
+
+      <div class="side-info">
+
+        <div id="clima-card">
+
+          <h3>🌦️ Clima</h3>
+
+          <p>Carregando...</p>
+
+        </div>
+
+        <div id="rota-card">
+
+          <h3>🛣️ Rota</h3>
+
+          <p>Aguardando busca...</p>
+
+        </div>
+
+      </div>
+
+      <div id="mapa"></div>
+
+      <div class="bottom-section">
+
+        <div id="linhas-card">
+
+          <h3>🚌 Linhas disponíveis</h3>
+
+          <ul id="lista-linhas"></ul>
+
+        </div>
+
+        <div id="estacao-card">
+
+          <h3>🚉 Estação mais próxima</h3>
+
+          <p id="nome-estacao">
+            Barra Funda
+          </p>
+
+          <img
+            src="/barra-funda.jpg"
+            alt="Estação">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script
+    type="module"
+    src="/src/main.ts">
+  </script>
+
+</body>
+</html>
