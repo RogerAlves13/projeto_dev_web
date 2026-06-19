@@ -1,0 +1,486 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Perseus API",
+    "description": "Documentação das APIs utilizadas pelo sistema Perseus.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/uninove-9cd/Perseus_API/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    },
+    {
+      "url": "https://nominatim.openstreetmap.org",
+      "description": "API Nominatim"
+    },
+    {
+      "url": "https://router.project-osrm.org",
+      "description": "API OSRM"
+    },
+    {
+      "url": "https://api.open-meteo.com",
+      "description": "API Open-Meteo"
+    },
+    {
+      "url": "https://overpass-api.de",
+      "description": "API Overpass"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Backend Node.js"
+    }
+  ],
+  "paths": {
+    "/search": {
+      "get": {
+        "summary": "Buscar origem",
+        "description": "Busca as coordenadas geográficas do local de origem informado pelo usuário.\n\nExemplo de request:\n\nGET https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Avenida%20Paulista\n",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "json"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Avenida Paulista"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta realizada com sucesso",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "place_id": 8973459,
+                    "lat": "-23.5560945",
+                    "lon": "-46.6622655",
+                    "name": "Avenida Paulista",
+                    "display_name": "Avenida Paulista, Consolação, São Paulo, Brasil"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos"
+          },
+          "403": {
+            "description": "Acesso negado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/search-destino": {
+      "get": {
+        "summary": "Buscar destino",
+        "description": "Busca as coordenadas geográficas do local de destino informado pelo usuário.\n\nExemplo de request:\n\nGET https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Parque%20Ibirapuera\n",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "json"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Parque Ibirapuera"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta realizada com sucesso",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "place_id": 9876543,
+                    "lat": "-23.587416",
+                    "lon": "-46.657634",
+                    "name": "Parque Ibirapuera",
+                    "display_name": "Parque Ibirapuera, São Paulo, Brasil"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos"
+          },
+          "403": {
+            "description": "Acesso negado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/reverse": {
+      "get": {
+        "summary": "Obter endereço atual",
+        "description": "Converte latitude e longitude em um endereço.\n\nExemplo de request:\n\nGET https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=-23.55052&lon=-46.633308\n",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "jsonv2"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": -23.55052
+            }
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": -46.633308
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta realizada com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "display_name": "Praça da Sé, São Paulo, Brasil"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/route/v1/driving": {
+      "get": {
+        "summary": "Calcular rota",
+        "description": "Calcula a rota entre a origem e o destino.\n\nExemplo de request:\n\nGET https://router.project-osrm.org/route/v1/driving/-46.633308,-23.55052;-46.657634,-23.587416?overview=full&geometries=geojson\n",
+        "parameters": [
+          {
+            "name": "overview",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "full"
+            }
+          },
+          {
+            "name": "geometries",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "geojson"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rota calculada com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "distance": 4800,
+                  "duration": 780
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/v1/forecast": {
+      "get": {
+        "summary": "Consultar clima",
+        "description": "Obtém informações climáticas da localização informada.\n",
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": -23.55052
+            }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": -46.633308
+            }
+          },
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "temperature_2m,weather_code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta realizada com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "temperature_2m": 21.8,
+                  "weather_code": 3
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/interpreter": {
+      "post": {
+        "summary": "Buscar paradas próximas",
+        "description": "Retorna as paradas de ônibus próximas à localização informada.\n",
+        "responses": {
+          "200": {
+            "description": "Consulta realizada com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "elements": [
+                    {
+                      "name": "Parada Consolação"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/interpreter-linhas": {
+      "post": {
+        "summary": "Buscar linhas próximas",
+        "description": "Retorna as linhas de ônibus disponíveis próximas à localização informada.\n",
+        "responses": {
+          "200": {
+            "description": "Consulta realizada com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "elements": [
+                    {
+                      "route": "875A-10"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/sptrans/login": {
+      "get": {
+        "summary": "Login SPTrans",
+        "description": "Realiza a autenticação da API da SPTrans utilizando o token configurado.\n",
+        "responses": {
+          "200": {
+            "description": "Autenticação realizada com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "autenticado": true
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/api/ia": {
+      "post": {
+        "summary": "Assistente IA",
+        "description": "Processa a mensagem enviada pelo usuário e retorna uma resposta contextualizada com base na localização informada.\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "mensagem": "Qual a estação mais próxima de mim?",
+                "latitude": -23.55052,
+                "longitude": -46.6333
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Resposta gerada com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "resposta": "A estação mais próxima é a Estação Sé, localizada a aproximadamente 350 metros da sua posição.",
+                  "acao": "mostrar_estacao",
+                  "dados": {
+                    "nome": "Sé",
+                    "distancia": 350
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/favoritos": {
+      "get": {
+        "summary": "Listar favoritos",
+        "description": "Retorna a lista de destinos favoritos cadastrados pelo usuário.\n",
+        "responses": {
+          "200": {
+            "description": "Lista retornada com sucesso",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "nome": "Casa",
+                    "endereco": "Avenida Paulista, São Paulo"
+                  },
+                  {
+                    "nome": "Trabalho",
+                    "endereco": "Rua Vergueiro, São Paulo"
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      },
+      "post": {
+        "summary": "Adicionar favorito",
+        "description": "Adiciona um novo destino à lista de favoritos do usuário.\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "nome": "Casa",
+                "endereco": "Avenida Paulista, São Paulo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Favorito adicionado com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}
