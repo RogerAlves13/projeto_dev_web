@@ -1,6 +1,17 @@
+//console.log(document.body.innerHTML)
+
 // =====================================
 // IMPORTAÇÕES
 // =====================================
+
+// Importa o banco de dados
+import { supabase } from './services/supabase'
+
+// Importa a autenticação do login da pasta services/auth
+import { login } from './services/auth'
+
+// Importa a autenticação do cadastro da pasta services/auth
+import { cadastrar } from './services/auth'
 
 // Importa o CSS da aplicação
 import './style.css'
@@ -11,12 +22,1117 @@ import L from 'leaflet'
 // Importa o CSS do Leaflet
 import 'leaflet/dist/leaflet.css'
 
+// Importa as estações
+import { estacoes } from './dados/estacoes.ts'
+
+// Importa as linha de ônibus
+import { linhasMock } from './dados/linhas.ts'
+
+/*interface Historico {
+
+  origem: string
+
+  destino: string
+
+  data: string
+
+}
+*/
+
+interface FavoritoBanco {
+
+  id: number
+
+  usuario_id: string
+
+  nome: string
+
+  endereco: string
+
+  latitude: number
+
+  longitude: number
+
+  criado_em: string
+
+}
+
+interface HistoricoBanco {
+
+  id: number
+
+  usuario_id: string
+
+  origem: string
+
+  destino: string
+
+  criado_em: string
+
+}
+
+interface PesquisaBanco {
+
+  id: number
+
+  usuario_id: string
+
+  origem: string
+
+  destino: string
+
+  distancia_km: number
+
+  tempo_minutos: number
+
+  criado_em: string
+
+}
+
+async function obterUsuarioAtual() {
+
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
+
+  return user
+
+}
+
+async function obterPerfil() {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  if (!usuario) {
+
+    return null
+
+  }
+
+  const {
+    data,
+    error
+  } = await supabase
+
+    .from('perfis')
+
+    .select('*')
+
+    .eq(
+      'id',
+      usuario.id
+    )
+
+    .single()
+
+  if (error) {
+
+    console.error(error)
+
+    return null
+
+  }
+
+  return data
+
+}
+
+async function atualizarPerfil(
+  nome: string,
+  cpf: string,
+  fotoPerfil: string
+) {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  if (!usuario) return
+
+  const { error } =
+    await supabase
+
+      .from('perfis')
+
+      .update({
+
+        nome,
+
+        cpf,
+
+        foto_perfil: fotoPerfil
+
+      })
+
+      .eq(
+        'id',
+        usuario.id
+      )
+
+  if (error) {
+
+    console.error(error)
+
+  }
+
+}
+
+async function atualizarInterfaceUsuario() {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  const spanUsuario =
+    document.querySelector('#usuario')
+
+  const btnLogin =
+    document.querySelector('#btn-login')
+
+  const btnCadastro =
+    document.querySelector('#btn-cadastro')
+
+  const btnLogout =
+    document.querySelector('#btn-logout')
+
+  if (usuario) {
+
+    if (spanUsuario) {
+
+      const perfil =
+        await obterPerfil()
+
+      spanUsuario.textContent =
+        `👤 ${
+          perfil?.nome ||
+          usuario.email
+        }`
+
+    }
+
+    btnLogin?.setAttribute(
+      'style',
+      'display:none'
+    )
+
+    btnCadastro?.setAttribute(
+      'style',
+      'display:none'
+    )
+
+    btnLogout?.setAttribute(
+      'style',
+      'display:block'
+    )
+
+  } else {
+
+    if (spanUsuario) {
+
+      spanUsuario.textContent = ''
+
+    }
+
+    btnLogout?.setAttribute(
+      'style',
+      'display:none'
+    )
+
+  }
+
+}
+async function obterFavoritosBanco():
+Promise<FavoritoBanco[]> {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  if (!usuario) {
+
+    return []
+
+  }
+
+  const {
+    data,
+    error
+  } = await supabase
+
+    .from('locais_salvos')
+    .select('*')
+    .eq('usuario_id', usuario.id)
+
+  if (error) {
+
+    console.error(error)
+
+    return []
+
+  }
+
+  return data || []
+
+}
+
+async function removerFavoritoBanco(
+  id: number
+) {
+
+  const { error } =
+    await supabase
+
+      .from('locais_salvos')
+
+      .delete()
+
+      .eq('id', id)
+
+  if (error) {
+
+    console.error(error)
+
+  }
+
+}
+
+async function salvarFavoritoBanco(
+  nome: string,
+  endereco: string,
+  latitude: number,
+  longitude: number
+) {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  if (!usuario) {
+
+    alert('Faça login primeiro.')
+
+    return
+
+  }
+
+  const { error } =
+    await supabase
+
+      .from('locais_salvos')
+
+      .insert({
+
+        usuario_id: usuario.id,
+
+        nome,
+
+        endereco,
+
+        latitude,
+
+        longitude
+
+      })
+
+  if (error) {
+
+    console.error(error)
+
+  }
+
+}
+
+async function atualizarFavoritoBanco(
+  id: number,
+  nome: string
+) {
+
+  const { error } =
+    await supabase
+
+      .from('locais_salvos')
+
+      .update({
+
+        nome
+
+      })
+
+      .eq('id', id)
+
+  if (error) {
+
+    console.error(error)
+
+  }
+
+}
+
+async function obterHistoricoBanco():
+Promise<HistoricoBanco[]> {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  if (!usuario) {
+
+    return []
+
+  }
+
+  const {
+    data,
+    error
+  } = await supabase
+
+    .from('historico_buscas')
+
+    .select('*')
+
+    .eq(
+      'usuario_id',
+      usuario.id
+    )
+
+    .order(
+      'criado_em',
+      {
+        ascending: false
+      }
+    )
+
+  if (error) {
+
+    console.error(error)
+
+    return []
+
+  }
+
+  return data || []
+
+}
+
+async function obterPesquisas():
+Promise<PesquisaBanco[]> {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  if (!usuario) {
+
+    return []
+
+  }
+
+  const {
+    data,
+    error
+  } = await supabase
+
+    .from('pesquisas')
+
+    .select('*')
+
+    .eq(
+      'usuario_id',
+      usuario.id
+    )
+
+    .order(
+      'criado_em',
+      {
+        ascending: false
+      }
+    )
+
+  if (error) {
+
+    console.error(error)
+
+    return []
+
+  }
+
+  return data || []
+
+}
+
+async function salvarHistoricoBanco(
+  origem: string,
+  destino: string
+) {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  if (!usuario) {
+
+    return
+
+  }
+
+  const { error } =
+    await supabase
+
+      .from('historico_buscas')
+
+      .insert({
+
+        usuario_id:
+          usuario.id,
+
+        origem,
+
+        destino
+
+      })
+
+  if (error) {
+
+    console.error(error)
+
+  }
+
+}
+
+async function removerHistoricoBanco(
+  id: number
+) {
+
+  const { error } =
+    await supabase
+
+      .from('historico_buscas')
+
+      .delete()
+
+      .eq('id', id)
+
+  if (error) {
+
+    console.error(error)
+
+  }
+
+}
+
+async function salvarPesquisa(
+  origem: string,
+  destino: string,
+  distanciaKm: number,
+  tempoMinutos: number
+) {
+
+  const usuario =
+    await obterUsuarioAtual()
+
+  if (!usuario) return
+
+  const { error } =
+    await supabase
+
+      .from('pesquisas')
+
+      .insert({
+
+        usuario_id: usuario.id,
+
+        origem,
+
+        destino,
+
+        distancia_km: distanciaKm,
+
+        tempo_minutos: tempoMinutos
+
+      })
+
+  if (error) {
+
+    console.error(error)
+
+  }
+
+}
+
+async function adicionarHistorico(
+  origem: string,
+  destino: string
+) {
+
+  await salvarHistoricoBanco(
+
+    origem,
+
+    destino
+
+  )
+
+  await carregarHistorico()
+
+}
+
+async function carregarHistorico() {
+
+  const historico =
+   await  obterHistoricoBanco()
+
+  const lista =
+    document.querySelector<HTMLUListElement>(
+      '#lista-historico'
+    )
+
+  if (!lista) return
+
+  if (historico.length === 0) {
+
+    lista.innerHTML =
+      '<li>Nenhuma busca realizada</li>'
+
+    return
+
+  }
+
+  lista.innerHTML =
+  historico.map(
+    (item, indice) => `
+
+<li class="historico-item">
+
+  <div
+    class="historico-conteudo"
+    data-indice="${indice}"
+    data-origem="${item.origem}"
+    data-destino="${item.destino}">
+
+    <strong>
+      ${item.destino}
+    </strong>
+
+    <br>
+
+    <small>
+      ${item.origem}
+    </small>
+
+  </div>
+
+  <button
+    class="btn-remover-historico"
+    data-indice="${indice}">
+    ❌
+  </button>
+
+</li>
+`
+).join('')
+
+  document
+    .querySelectorAll('.historico-conteudo')
+    .forEach(item => {
+
+      item.addEventListener(
+        'click',
+        () => {
+
+          const origem =
+            item.getAttribute(
+              'data-origem'
+            )
+
+          const destino =
+            item.getAttribute(
+              'data-destino'
+            )
+
+          const inputOrigem =
+            document.querySelector<HTMLInputElement>(
+              '#origem'
+            )
+
+          const inputDestino =
+            document.querySelector<HTMLInputElement>(
+              '#destino'
+            )
+
+          if (
+            !inputOrigem ||
+            !inputDestino
+          ) return
+
+          inputOrigem.value =
+            origem || ''
+
+          inputDestino.value =
+            destino || ''
+
+          document
+            .querySelector<HTMLButtonElement>(
+              '#buscar'
+            )
+            ?.click()
+
+        }
+
+      )
+
+    })
+
+  document
+  .querySelectorAll(
+    '.btn-remover-historico'
+  )
+  .forEach(botao => {
+
+    botao.addEventListener(
+      'click',
+     async (evento) => {
+
+        evento.stopPropagation()
+
+        const indice =
+          Number(
+            botao.getAttribute(
+              'data-indice'
+            )
+          )
+
+        removerHistorico(
+          indice
+        )
+
+      }
+    )
+
+  })
+
+}
+
+//console.log('IMPORT LINHAS: ', linhasMock)
+
+// =====================================
+// FUNÇÃO PARA CÁLCULO DE DISTÂNCIA
+// =====================================
+function calcularDistancia(
+
+  lat1:number,
+  lon1:number,
+  lat2:number,
+  lon2:number
+
+){
+
+  const R = 6371
+
+  const dLat =
+    (lat2 - lat1) * Math.PI / 180
+
+  const dLon =
+    (lon2 - lon1) * Math.PI / 180
+
+  const a =
+
+    Math.sin(dLat/2) *
+    Math.sin(dLat/2)
+
+    +
+
+    Math.cos(lat1 * Math.PI/180) *
+    Math.cos(lat2 * Math.PI/180)
+
+    *
+
+    Math.sin(dLon/2) *
+    Math.sin(dLon/2)
+
+  const c =
+    2 *
+    Math.atan2(
+      Math.sqrt(a),
+      Math.sqrt(1-a)
+    )
+
+  return R * c
+
+}
+
+// =====================================
+// FUNÇÃO PARA LOCALIZAÇÃO DA ESTAÇÃO MAIS PRÓXIMA
+// =====================================
+
+function buscarEstacaoMaisProxima(
+
+  latitude:number,
+  longitude:number
+
+){
+
+  let estacaoMaisProxima =
+    estacoes[0]
+
+  let menorDistancia =
+    Infinity
+
+  estacoes.forEach((estacao) => {
+
+    const distancia =
+      calcularDistancia(
+
+        latitude,
+        longitude,
+
+        estacao.lat,
+        estacao.lon
+
+      )
+
+    if (distancia < menorDistancia){
+
+      menorDistancia =
+        distancia
+
+      estacaoMaisProxima =
+        estacao
+
+    }
+
+  })
+
+  return {
+
+    estacao:
+      estacaoMaisProxima,
+
+    distancia:
+      menorDistancia
+
+  }
+
+}
+
   // =====================================
   // CRIAÇÃO DO MAPA
   // =====================================
 
-window.addEventListener('DOMContentLoaded', () => {
+async function carregarFavoritos() {
 
+  const favoritos =
+    await obterFavoritosBanco()
+
+  const lista =
+    document.querySelector<HTMLUListElement>(
+      '#lista-favoritos'
+    )
+
+  if (!lista) return
+
+  lista.innerHTML = ''
+
+  if (favoritos.length === 0) {
+
+    lista.innerHTML =
+      '<li>Nenhum favorito salvo</li>'
+
+    return
+
+  }
+
+  lista.innerHTML =
+  favoritos.map(
+    (
+      favorito: FavoritoBanco,
+      indice: number
+    ) => `
+
+      <li class="favorito-item">
+
+        <div>
+
+          <strong>
+            ${favorito.nome}
+          </strong>
+
+          <br>
+
+          <small>
+            ${favorito.endereco}
+          </small>
+
+        </div>
+
+        <div class="acoes-favorito">
+
+          <button
+            class="btn-ir"
+            data-indice="${indice}">
+            🚀
+          </button>
+
+          <button
+            class="btn-editar"
+            data-indice="${indice}">
+            ✏️
+          </button>
+
+          <button
+            class="btn-remover"
+            data-indice="${indice}">
+            ❌
+          </button>
+
+        </div>
+
+      </li>
+
+    `
+  ).join('')
+
+// Botão remover
+document
+  .querySelectorAll('.btn-remover')
+  .forEach(botao => {
+
+    botao.addEventListener(
+      'click',
+      async () => {
+
+        const indice =
+          Number(
+            botao.getAttribute(
+              'data-indice'
+            )
+          )
+
+        const favoritos =
+          await obterFavoritosBanco()
+
+        await removerFavoritoBanco(
+          favoritos[indice].id
+        )
+
+        await carregarFavoritos()
+
+      }
+    )
+
+  })
+
+// Botão editar
+document
+  .querySelectorAll('.btn-editar')
+  .forEach(botao => {
+
+    botao.addEventListener(
+      'click',
+      async () => {
+
+        const indice =
+          Number(
+            botao.getAttribute(
+              'data-indice'
+            )
+          )
+
+        const favoritos =
+           await obterFavoritosBanco()
+
+        const novoNome =
+          prompt(
+            'Novo nome:',
+            favoritos[indice].nome
+          )
+
+        if (!novoNome) return
+
+        await atualizarFavoritoBanco(
+
+          favoritos[indice].id,
+
+          novoNome
+
+        )
+
+        await carregarFavoritos()
+
+      }
+    )
+
+  })
+
+// Botão ir
+document
+  .querySelectorAll('.btn-ir')
+  .forEach(botao => {
+
+    botao.addEventListener(
+      'click',
+      async () => {
+
+        const indice =
+          Number(
+            botao.getAttribute(
+              'data-indice'
+            )
+          )
+
+        const favoritos =
+           await obterFavoritosBanco()
+          
+
+        const inputDestino =
+          document.querySelector<HTMLInputElement>(
+            '#destino'
+          )
+
+        if (!inputDestino) return
+
+        inputDestino.value =
+          favoritos[indice].endereco
+
+      }
+    )
+
+  }) 
+
+}
+
+async function carregarDashboard() {
+
+  const dashboard =
+    document.querySelector(
+      '#dashboard-conteudo'
+    )
+
+  if (!dashboard) return
+
+  const pesquisas =
+    await obterPesquisas()
+
+  const favoritos =
+    await obterFavoritosBanco()
+
+  const totalPesquisas =
+    pesquisas.length
+
+  const totalFavoritos =
+    favoritos.length
+
+  const ultimaPesquisa =
+    pesquisas[0]
+
+  const distanciaTotal =
+    pesquisas.reduce(
+
+      (total, pesquisa) =>
+
+        total +
+        (pesquisa.distancia_km || 0),
+
+      0
+
+    )
+
+  dashboard.innerHTML = `
+
+    <div class="dashboard-item">
+      🔎 <strong>${totalPesquisas}</strong>
+      pesquisas
+    </div>
+
+    <div class="dashboard-item">
+      ⭐ <strong>${totalFavoritos}</strong>
+      favoritos
+    </div>
+
+    <div class="dashboard-item">
+      📏 <strong>${distanciaTotal.toFixed(1)} km</strong>
+    </div>
+
+    <div class="dashboard-item">
+      🕒 ${
+        ultimaPesquisa
+          ? `${ultimaPesquisa.origem} → ${ultimaPesquisa.destino}`
+          : 'Nenhuma'
+      }
+    </div>
+
+  `
+}
+
+async function removerHistorico(
+  indice: number
+) {
+
+  const historico =
+    await obterHistoricoBanco()
+
+  await removerHistoricoBanco(
+
+    historico[indice].id
+
+  )
+
+  await carregarHistorico()
+
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+
+/*console.log(
+  document.querySelector('#favoritos-card')
+)
+
+console.log(
+  document.querySelector('#lista-favoritos')
+)
+*/
+
+await carregarFavoritos()
+
+await carregarHistorico()
+
+await atualizarInterfaceUsuario()
+
+await carregarDashboard()
+
+const btnFavoritar =
+  document.querySelector<HTMLButtonElement>(
+    '#favoritar-destino'
+  )
+
+btnFavoritar?.addEventListener(
+  'click',
+  async () => {
+
+    const destino =
+      document.querySelector<HTMLInputElement>(
+        '#destino'
+      )
+
+    if (!destino?.value.trim()) {
+      alert('Digite um destino primeiro.')
+      return
+    }
+
+    const apelido =
+      prompt('Nome do favorito:', 'Casa')
+
+    if (!apelido) return
+
+    await salvarFavoritoBanco(
+
+      apelido,
+
+      destino.value,
+
+      ultimoDestinoLat,
+
+      ultimoDestinoLon
+
+    )
+
+    await carregarFavoritos()
+
+  }
+)
   
   const mapa = L.map('mapa').setView(
     [-23.55052, -46.633308],
@@ -56,8 +1172,8 @@ const camadaParadas =
         const longitude =
           posicao.coords.longitude
 
-        console.log('Latitude:', latitude)
-        console.log('Longitude:', longitude)
+        //console.log('Latitude:', latitude)
+        //console.log('Longitude:', longitude)
 
         // Centraliza mapa na posição do usuário
         mapa.setView(
@@ -107,6 +1223,43 @@ const camadaParadas =
               latitude,
               longitude
             )
+
+            buscarLinhasReais(
+              latitude,
+              longitude
+            )
+
+          const resultado =
+            buscarEstacaoMaisProxima(
+              latitude,
+              longitude
+            )
+
+              console.log(resultado)
+          const nomeEstacao =
+          document.querySelector(
+            '#nome-estacao'
+          )
+
+          const imagemEstacao =
+            document.querySelector<HTMLImageElement>(
+              '#imagem-estacao'
+            )
+
+          if (nomeEstacao) {
+
+            nomeEstacao.textContent =
+              `${resultado.estacao.nome}
+                (${resultado.distancia.toFixed(1)} km)`
+
+          }
+
+          if (imagemEstacao) {
+
+            imagemEstacao.src =
+              resultado.estacao.imagem
+
+          }
 
       },
 
@@ -209,64 +1362,27 @@ async function buscarParadas(
     // Requisição
     const resposta = await fetch(
 
-      'https://overpass-api.de/api/interpreter',
+  'https://overpass-api.de/api/interpreter',
 
-      {
-        method: 'POST',
+  {
+    method: 'POST',
+    body: query
+  }
 
-        body: query
-      }
+)
 
-    )
+if (!resposta.ok) {
 
+  console.warn(
+    `Overpass indisponível (${resposta.status})`
+  )
+
+  return
+
+}
     // JSON da API
     const dados =
       await resposta.json()
-
-    const lista =
-    document.querySelector<HTMLUListElement>(
-      '#lista-linhas'
-    )
-
-  if (!lista) return
-
-  lista.innerHTML = ''
-
-  const linhasMock = [
-
-  {
-    nome: '8622-10',
-    tempo: '3 min'
-  },
-
-  {
-    nome: '875A-10',
-    tempo: '6 min'
-  },
-
-  {
-    nome: '809P-10',
-    tempo: '8 min'
-  }
-
-]
-
-linhasMock.forEach((linha) => {
-
-  lista.innerHTML += `
-    <li class="linha-item">
-
-      <span class="linha-nome">
-        🚌 ${linha.nome}
-      </span>
-
-      <span class="linha-tempo">
-        ${linha.tempo}
-      </span>
-
-    </li>
-  `
-})
 
     //console.log(dados)
 
@@ -308,6 +1424,159 @@ linhasMock.forEach((linha) => {
 
 }
 
+async function buscarLinhasReais(
+  latitude:number,
+  longitude:number
+) {
+
+  try {
+
+    const query = `
+      [out:json];
+
+      relation
+        ["route"="bus"]
+        (around:1000,${latitude},${longitude});
+
+      out tags;
+    `
+
+    const resposta = await fetch(
+        'https://overpass-api.de/api/interpreter',
+        {
+          method: 'POST',
+          body: query
+        }
+      )
+
+      if (!resposta.ok) {
+
+        console.warn(
+          `Overpass indisponível (${resposta.status})`
+        )
+
+        linhasMock.forEach((linha) => {
+
+          lista!.innerHTML += `
+            <li class="linha-item">
+
+              <span class="linha-nome">
+                🚌 ${linha.nome}
+              </span>
+
+              <span class="linha-tempo">
+                ${linha.tempo}
+              </span>
+
+            </li>
+          `
+
+        })
+
+        return
+
+      }
+
+      const dados = 
+      await resposta.json()
+
+    const lista =
+      document.querySelector<HTMLUListElement>(
+        '#lista-linhas'
+      )
+
+    if (!lista) return
+
+    lista.innerHTML = ''
+
+    if (
+  !dados.elements ||
+  dados.elements.length === 0
+) {
+
+  linhasMock.forEach((linha) => {
+
+    lista.innerHTML += `
+      <li class="linha-item">
+
+        <span class="linha-nome">
+          🚌 ${linha.nome}
+        </span>
+
+        <span class="linha-tempo">
+          ${linha.tempo}
+        </span>
+
+      </li>
+    `
+  })
+
+  return
+}
+
+    const linhasUnicas =
+      new Map<string, string>()
+
+    dados.elements.forEach(
+      (linha:any) => {
+
+        const codigo =
+          linha.tags?.ref ||
+          'Sem código'
+
+        const nomeCompleto =
+          linha.tags?.name ||
+          'Linha sem nome'
+
+        const nome =
+          nomeCompleto.replace(
+            codigo,
+            ''
+          ).trim()
+
+        linhasUnicas.set(
+          codigo,
+          nome
+        )
+
+      }
+    )
+
+      linhasUnicas.forEach(
+        (nome, codigo) => {
+
+          const tempoChegada =
+            Math.floor(
+              Math.random() * 15
+            ) + 2
+
+        lista.innerHTML += `
+          <li class="linha-item">
+
+            <span class="linha-nome">
+              🚌 ${codigo} - ${nome}
+            </span>
+
+            <span class="linha-tempo">
+              ⏱️ ${tempoChegada} min
+            </span>
+
+          </li>
+        `
+      }
+    )
+
+  } catch (erro) {
+
+    console.error(
+      'Erro ao buscar linhas:',
+      erro
+    )
+
+  }
+
+}
+
 async function buscarClima(
   latitude: number,
   longitude: number
@@ -339,7 +1608,7 @@ async function buscarClima(
 
     if (cardClima) {
 
-      cardClima!.innerHTML = `
+      cardClima.innerHTML = `
         <h3>🌦️ Clima</h3>
         <p>🌡️ ${temperatura}°C</p>
       `
@@ -374,6 +1643,10 @@ async function buscarClima(
 
   // Marcador de destino
   let marcadorDestino: L.Marker | null = null
+
+  let ultimoDestinoLat = 0
+
+  let ultimoDestinoLon = 0
 
   // =====================================
   // BOTÃO MINHA LOCALIZAÇÃO
@@ -428,7 +1701,19 @@ async function buscarClima(
 
               }
 
-              const dados = await resposta.json()
+              if (!resposta.ok) {
+
+                console.error(
+                  'Erro Overpass:',
+                  resposta.status
+                )
+
+                return
+
+              }
+
+              const dados =
+                await resposta.json()
 
               console.log(dados)
 
@@ -611,6 +1896,10 @@ async function buscarClima(
             dadosDestino[0].lon
           )
 
+          ultimoDestinoLat = destinoLat
+
+          ultimoDestinoLon = destinoLon
+
         // =====================================
         // BUSCA ROTA
         // =====================================
@@ -759,11 +2048,34 @@ async function buscarClima(
         marcadorDestino = L.marker(
           [destinoLat, destinoLon]
         )
+        
         .addTo(mapa)
         .bindPopup(
           `🏁 ${dadosDestino[0].display_name}`
         )
         .openPopup()
+
+        await adicionarHistorico(
+
+        origem,
+
+        destino
+
+      )
+
+      await salvarPesquisa(
+
+  origem,
+
+  destino,
+
+  Number(distanciaKm),
+
+  tempoMinutos
+
+)
+
+await carregarDashboard()
 
       } catch (erro) {
 
@@ -778,4 +2090,215 @@ async function buscarClima(
     }
 
   )
+
 })
+
+// =====================================
+// CONEXÃO COM O BANCO DE DADOS
+// =====================================
+
+async function testarSupabase() {
+
+  const { data, error } =
+    await supabase
+      .from('paradas')
+      .select('*')
+      .limit(1)
+
+  console.log(data)
+  console.log(error)
+
+}
+
+testarSupabase()
+
+// =====================================
+// OPERAÇÃO DE CADASTRO / LOGIN
+// =====================================
+
+const btnLogin =
+  document.querySelector('#btn-login')
+
+btnLogin?.addEventListener(
+
+  'click',
+
+  async () => {
+
+    const email =
+      prompt('Email')
+
+    const senha =
+      prompt('Senha')
+
+    if(
+      !email ||
+      !senha
+    ){
+      return
+    }
+
+    const {
+
+      error
+
+    } = await login(
+
+      email,
+
+      senha
+
+    )
+
+    if(error){
+
+      alert(
+        error.message
+      )
+
+      return
+    }
+
+    alert(
+      'Login realizado!'
+    )
+
+    await carregarFavoritos()
+
+    await atualizarInterfaceUsuario()
+
+    await carregarDashboard()
+
+    await carregarFavoritos()
+
+  const favoritos =
+    await obterFavoritosBanco()
+
+console.log(favoritos)
+
+  }
+
+)
+
+const btnCadastro =
+  document.querySelector('#btn-cadastro')
+
+btnCadastro?.addEventListener(
+
+  'click',
+
+  async () => {
+
+    const email =
+      prompt('Email')
+
+    const senha =
+      prompt('Senha')
+
+    if(
+      !email ||
+      !senha
+    ){
+      return
+    }
+
+    const {
+
+      error
+
+    } = await cadastrar(
+
+      email,
+
+      senha
+
+    )
+
+    if(error){
+
+      alert(
+        error.message
+      )
+
+      return
+    }
+
+    alert(
+      'Conta criada!'
+    )
+
+  }
+
+)
+
+const btnLogout =
+  document.querySelector('#btn-logout')
+
+btnLogout?.addEventListener(
+
+  'click',
+
+  async () => {
+
+    await supabase.auth.signOut()
+
+    location.reload()
+
+  }
+
+)
+
+const btnPerfil =
+  document.querySelector('#btn-perfil')
+
+btnPerfil?.addEventListener(
+  'click',
+  async () => {
+
+    const perfil =
+      await obterPerfil()
+
+    const nome =
+      prompt(
+        'Nome:',
+        perfil?.nome || ''
+      )
+
+    if (nome === null) return
+
+    const cpf =
+      prompt(
+        'CPF:',
+        String(
+          perfil?.cpf || ''
+        )
+      )
+
+    if (cpf === null) return
+
+    const foto =
+      prompt(
+        'URL da foto:',
+        perfil?.foto_perfil || ''
+      )
+
+    if (foto === null) return
+
+    await atualizarPerfil(
+
+      nome,
+
+      cpf,
+
+      foto
+
+    )
+
+    await atualizarInterfaceUsuario()
+
+    alert(
+      'Perfil atualizado!'
+    )
+
+  }
+)

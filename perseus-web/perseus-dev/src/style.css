@@ -402,11 +402,39 @@ body {
 
 }
 
+.bottom-section {
+
+  width: 95%;
+
+  margin: 20px auto;
+
+  display: flex;
+
+  gap: 20px;
+
+}
+
 #linhas-card {
 
-  flex: 2;
+  flex: 1.5;
 
-  min-height: 150px;
+  min-height: 250px;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+}
+
+#favoritos-card {
+
+  flex: 1;
+
+  min-height: 250px;
 
   background: white;
 
@@ -419,15 +447,147 @@ body {
 
 }
 
-.bottom-section {
+#lista-favoritos {
 
-  width: 95%;
+  list-style: none;
 
-  margin: 20px;
+  padding: 0;
+
+  margin: 0;
+
+}
+
+.favorito-item {
 
   display: flex;
 
-  gap: 20px;
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #ddd;
+
+}
+
+.favorito-item > div:first-child {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+.acoes-favorito {
+
+  display: flex;
+
+  gap: 8px;
+
+}
+
+.btn-ir,
+.btn-editar,
+.btn-remover {
+
+  width: 36px;
+  height: 36px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 16px;
+
+  transition: .2s;
+
+}
+
+.btn-ir {
+
+  background: #1e90ff;
+
+  color: white;
+
+}
+
+.btn-editar {
+
+  background: #f39c12;
+
+  color: white;
+
+}
+
+.btn-remover {
+
+  background: #e74c3c;
+
+  color: white;
+
+}
+
+.btn-ir:hover,
+.btn-editar:hover,
+.btn-remover:hover {
+
+  transform: translateY(-2px);
+
+}
+
+.favorito-item small {
+
+  color: #666;
+
+  display: block;
+
+  margin-top: 4px;
+
+  max-width: 250px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+}
+
+#favoritar-destino {
+
+  width: 100%;
+
+  margin-top: 12px;
+
+  padding: 10px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #f39c12;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+}
+
+#favoritar-destino:hover {
+
+  transform: scale(1.03);
 
 }
 
@@ -445,12 +605,15 @@ body {
 
   box-shadow:
     0 8px 20px rgba(0,0,0,.15);
-
 }
 
 #estacao-card img {
 
   width: 100%;
+
+  height: 180px;
+
+  object-fit: cover;
 
   border-radius: 12px;
 
@@ -542,7 +705,146 @@ body {
   font-weight: bold;
 }
 
+#historico-card {
 
+  flex: 1;
+
+  min-height: 250px;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+}
+
+#lista-historico {
+
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0;
+
+}
+
+#dashboard-card {
+
+  flex: 1;
+
+  min-height: 250px;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.dashboard-item {
+
+  margin-bottom: 12px;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background: rgba(0,0,0,.05);
+
+}
+
+.historico-item {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #ddd;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+}
+
+.historico-item:hover {
+
+  transform: translateX(5px);
+
+}
+
+body.dark #historico-card {
+
+  background: #2a2a2a;
+
+  color: white;
+
+}
+
+body.dark #dashboard-card {
+
+  background: #2a2a2a;
+
+  color: white;
+
+}
+
+body.dark .historico-conteudo small {
+
+  color: #bdbdbd;
+
+}
+
+body.dark .historico-item {
+
+  border-bottom: 1px solid #555;
+
+}
+
+.historico-conteudo {
+
+  flex: 1;
+
+  cursor: pointer;
+
+}
+
+.btn-remover-historico {
+
+  width: 30px;
+  height: 30px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: #e74c3c;
+
+  color: white;
+
+  transition: .2s;
+
+}
+
+.btn-remover-historico:hover {
+
+  transform: scale(1.1);
+
+}
 
 @media (max-width: 900px) {
 
@@ -574,6 +876,12 @@ body {
     width: 100%;
   }
 
+    .bottom-section {
+
+    flex-direction: column;
+
+  }
+
 }
 
 /* =====================================
@@ -585,8 +893,28 @@ body.dark {
 
 }
 
+body.dark .favorito-item small {
+
+  color: #bdbdbd;
+
+}
+
+body.dark .favorito-item {
+
+  border-bottom: 1px solid #555;
+
+}
+
+body.dark .linha-item {
+
+  border-bottom: 1px solid #555;
+
+}
+
 body.dark .topbar,
 body.dark .search-container,
+body.dark #favoritos-card,
+body.dark #historico-card,
 body.dark #clima-card,
 body.dark #rota-card,
 body.dark #linhas-card,
@@ -609,5 +937,29 @@ body.dark input {
 body.dark input::placeholder {
 
   color: #bdbdbd;
+
+}
+
+body.dark .btn-ir {
+
+  background: #3498db;
+
+}
+
+body.dark .btn-editar {
+
+  background: #f39c12;
+
+}
+
+body.dark .btn-remover {
+
+  background: #e74c3c;
+
+}
+
+body.dark .btn-remover-historico {
+
+  background: #e74c3c;
 
 }

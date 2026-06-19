@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>w</title>
+    <title>PERSEUS</title>
   </head>
   <body>
   
@@ -20,7 +20,23 @@
 
         <nav class="menu">
 
-          <button>Login</button>
+          <button id="btn-login">
+            Login
+          </button>
+
+          <button id="btn-cadastro">
+            Cadastro
+          </button>
+
+          <span id="usuario"></span>
+
+          <button id="btn-logout">
+            Sair
+          </button>
+
+          <button id="btn-perfil">
+            ⚙️ Perfil
+          </button>
 
           <button>Baixar App</button>
 
@@ -98,6 +114,14 @@
 
           <p>Aguardando busca...</p>
 
+          <button
+            id="favoritar-destino"
+            class="favorito-btn">
+
+            ⭐ Favoritar destino
+
+          </button>
+
         </div>
 
       </div>
@@ -114,17 +138,52 @@
 
         </div>
 
+        <div id="favoritos-card">
+
+          <h3>⭐ Favoritos</h3>
+
+          <ul id="lista-favoritos">
+
+            <li>Nenhum favorito salvo</li>
+
+          </ul>
+
+        </div>
+
+        <div id="historico-card">
+
+          <h3>🕒 Últimas buscas</h3>
+
+          <ul id="lista-historico">
+
+            <li>Nenhuma busca realizada</li>
+
+          </ul>
+
+        </div>
+
         <div id="estacao-card">
 
           <h3>🚉 Estação mais próxima</h3>
 
           <p id="nome-estacao">
-            Barra Funda
+            Carregando...
           </p>
 
           <img
+            id="imagem-estacao"
             src="/barra-funda.jpg"
             alt="Estação">
+
+        </div>
+
+        <div id="dashboard-card" class="card">
+            <h3>📊 Meu Uso</h3>
+
+            <p id="dashboard-conteudo">
+              Carregando...
+            </p>
+          </div>
 
         </div>
 
