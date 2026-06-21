@@ -71,24 +71,6 @@ interface HistoricoBanco {
 
 }
 
-interface PesquisaBanco {
-
-  id: number
-
-  usuario_id: string
-
-  origem: string
-
-  destino: string
-
-  distancia_km: number
-
-  tempo_minutos: number
-
-  criado_em: string
-
-}
-
 async function obterUsuarioAtual() {
 
   const {
@@ -101,30 +83,20 @@ async function obterUsuarioAtual() {
 
 async function obterPerfil() {
 
-  const usuario =
+  const user =
     await obterUsuarioAtual()
 
-  if (!usuario) {
+  if (!user) {
 
     return null
 
   }
 
-  const {
-    data,
-    error
-  } = await supabase
-
-    .from('perfis')
-
-    .select('*')
-
-    .eq(
-      'id',
-      usuario.id
-    )
-
-    .single()
+  const { data, error } = await supabase
+  .from("perfis")
+  .select("*")
+  .eq("id", user.id)
+  .maybeSingle()
 
   if (error) {
 
@@ -410,51 +382,6 @@ Promise<HistoricoBanco[]> {
 
 }
 
-async function obterPesquisas():
-Promise<PesquisaBanco[]> {
-
-  const usuario =
-    await obterUsuarioAtual()
-
-  if (!usuario) {
-
-    return []
-
-  }
-
-  const {
-    data,
-    error
-  } = await supabase
-
-    .from('pesquisas')
-
-    .select('*')
-
-    .eq(
-      'usuario_id',
-      usuario.id
-    )
-
-    .order(
-      'criado_em',
-      {
-        ascending: false
-      }
-    )
-
-  if (error) {
-
-    console.error(error)
-
-    return []
-
-  }
-
-  return data || []
-
-}
-
 async function salvarHistoricoBanco(
   origem: string,
   destino: string
@@ -505,45 +432,6 @@ async function removerHistoricoBanco(
       .delete()
 
       .eq('id', id)
-
-  if (error) {
-
-    console.error(error)
-
-  }
-
-}
-
-async function salvarPesquisa(
-  origem: string,
-  destino: string,
-  distanciaKm: number,
-  tempoMinutos: number
-) {
-
-  const usuario =
-    await obterUsuarioAtual()
-
-  if (!usuario) return
-
-  const { error } =
-    await supabase
-
-      .from('pesquisas')
-
-      .insert({
-
-        usuario_id: usuario.id,
-
-        origem,
-
-        destino,
-
-        distancia_km: distanciaKm,
-
-        tempo_minutos: tempoMinutos
-
-      })
 
   if (error) {
 
@@ -994,69 +882,6 @@ document
 
 }
 
-async function carregarDashboard() {
-
-  const dashboard =
-    document.querySelector(
-      '#dashboard-conteudo'
-    )
-
-  if (!dashboard) return
-
-  const pesquisas =
-    await obterPesquisas()
-
-  const favoritos =
-    await obterFavoritosBanco()
-
-  const totalPesquisas =
-    pesquisas.length
-
-  const totalFavoritos =
-    favoritos.length
-
-  const ultimaPesquisa =
-    pesquisas[0]
-
-  const distanciaTotal =
-    pesquisas.reduce(
-
-      (total, pesquisa) =>
-
-        total +
-        (pesquisa.distancia_km || 0),
-
-      0
-
-    )
-
-  dashboard.innerHTML = `
-
-    <div class="dashboard-item">
-      🔎 <strong>${totalPesquisas}</strong>
-      pesquisas
-    </div>
-
-    <div class="dashboard-item">
-      ⭐ <strong>${totalFavoritos}</strong>
-      favoritos
-    </div>
-
-    <div class="dashboard-item">
-      📏 <strong>${distanciaTotal.toFixed(1)} km</strong>
-    </div>
-
-    <div class="dashboard-item">
-      🕒 ${
-        ultimaPesquisa
-          ? `${ultimaPesquisa.origem} → ${ultimaPesquisa.destino}`
-          : 'Nenhuma'
-      }
-    </div>
-
-  `
-}
-
 async function removerHistorico(
   indice: number
 ) {
@@ -1091,7 +916,57 @@ await carregarHistorico()
 
 await atualizarInterfaceUsuario()
 
-await carregarDashboard()
+const btnChat =
+  document.querySelector<HTMLButtonElement>(
+    '#btn-chat-ia'
+  )
+
+const chat =
+  document.querySelector<HTMLDivElement>(
+    '#chat-ia'
+  )
+
+btnChat?.addEventListener(
+  'click',
+  () => {
+
+    if (!chat) return
+
+    chat.style.display =
+      chat.style.display === 'flex'
+      ? 'none'
+      : 'flex'
+
+  }
+)
+
+const btnEnviarIA =
+  document.querySelector<HTMLButtonElement>(
+    '#enviar-ia'
+  )
+
+btnEnviarIA?.addEventListener(
+  'click',
+  enviarPerguntaIA
+)
+
+const inputIA =
+  document.querySelector<HTMLInputElement>(
+    '#input-ia'
+  )
+
+inputIA?.addEventListener(
+  'keydown',
+  (evento) => {
+
+    if (evento.key === 'Enter') {
+
+      enviarPerguntaIA()
+
+    }
+
+  }
+)
 
 const btnFavoritar =
   document.querySelector<HTMLButtonElement>(
@@ -2062,21 +1937,6 @@ async function buscarClima(
         destino
 
       )
-
-      await salvarPesquisa(
-
-  origem,
-
-  destino,
-
-  Number(distanciaKm),
-
-  tempoMinutos
-
-)
-
-await carregarDashboard()
-
       } catch (erro) {
 
         console.error(erro)
@@ -2166,8 +2026,6 @@ btnLogin?.addEventListener(
     await carregarFavoritos()
 
     await atualizarInterfaceUsuario()
-
-    await carregarDashboard()
 
     await carregarFavoritos()
 
@@ -2302,3 +2160,96 @@ btnPerfil?.addEventListener(
 
   }
 )
+
+async function perguntarIA(
+  pergunta:string,
+  contexto:any
+) {
+
+  const resposta =
+    await fetch(
+      'http://localhost:3000/api/ia',
+      {
+
+        method:'POST',
+
+        headers:{
+          'Content-Type':
+            'application/json'
+        },
+
+        body: JSON.stringify({
+
+          pergunta,
+          contexto
+
+        })
+
+      }
+    )
+
+  return await resposta.json()
+
+}
+
+async function enviarPerguntaIA() {
+
+  const input =
+    document.querySelector<HTMLInputElement>(
+      '#input-ia'
+    )
+
+  const mensagens =
+    document.querySelector<HTMLDivElement>(
+      '#chat-mensagens'
+    )
+
+  if (
+    !input ||
+    !mensagens
+  ) return
+
+  const pergunta =
+    input.value.trim()
+
+  if (!pergunta) return
+
+  mensagens.innerHTML += `
+    <div class="msg-usuario">
+       ${pergunta} 👤
+    </div>
+  `
+
+  mensagens.scrollTop =
+  mensagens.scrollHeight
+
+  input.value = ''
+
+  try {
+
+    const resposta =
+      await perguntarIA(
+        pergunta,
+        {}
+      )
+
+    mensagens.innerHTML += `
+      <div class="msg-ia">
+        🤖 ${resposta.resposta}
+      </div>
+    `
+
+    mensagens.scrollTop =
+      mensagens.scrollHeight
+
+  } catch {
+
+    mensagens.innerHTML += `
+      <div class="msg-erro">
+        ❌ Erro ao consultar IA
+      </div>
+    `
+
+  }
+
+}

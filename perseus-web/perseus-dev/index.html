@@ -126,7 +126,17 @@
 
       </div>
 
-      <div id="mapa"></div>
+      <div id="mapa-container">
+
+        <div id="mapa"></div>
+
+        <button id="btn-chat-ia">
+
+          🤖
+
+        </button>
+
+      </div>
 
       <div class="bottom-section">
 
@@ -177,14 +187,6 @@
 
         </div>
 
-        <div id="dashboard-card" class="card">
-            <h3>📊 Meu Uso</h3>
-
-            <p id="dashboard-conteudo">
-              Carregando...
-            </p>
-          </div>
-
         </div>
 
       </div>
@@ -197,6 +199,36 @@
     type="module"
     src="/src/main.ts">
   </script>
+
+  <div id="chat-ia">
+
+  <div id="chat-header">
+
+    🤖 Assistente Perseus
+
+  </div>
+
+  <div id="chat-mensagens">
+
+  </div>
+
+  <div id="chat-input-area">
+
+    <input
+      type="text"
+      id="input-ia"
+      placeholder="Pergunte algo..."
+    >
+
+    <button id="enviar-ia">
+
+      ➤
+
+    </button>
+
+  </div>
+
+</div>
 
 </body>
 </html>
