@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <link rel="stylesheet" href="cadastro style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=IM+FELL+English&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <a href="Login preto.html" class="home-btn">
+    <img src="/Imagens/casa 1.png" alt="Home">
+</a>
+
+    <div class="container">
+
+        <img
+            src="/Imagens/Logo perseus.png"
+            alt="Logo Perseus"
+            class="logo"
+        >
+
+        <form class="formulario" id="cadastroForm">
+
+            <label for="nome">Digite seu nome:</label>
+            <input
+                type="text"
+                id="nome"
+                placeholder="Nome"
+                required
+            >
+
+            <label for="email">Digite seu E-mail:</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="email@gmail.com"
+                required
+            >
+
+            <label for="telefone">Digite seu telefone:</label>
+            <input
+                type="tel"
+                id="telefone"
+                placeholder="(11) 99999-9999"
+                required
+            >
+
+            <label for="endereco">Digite seu endereço:</label>
+            <input
+                type="text"
+                id="endereco"
+                placeholder="Endereço"
+                required
+            >
+
+            <label for="senha">Digite sua senha:</label>
+            <input
+                type="password"
+                id="senha"
+                placeholder="PASSWORD"
+                required
+                minlength="6"
+            >
+
+            <button
+                type="submit"
+                class="botao">
+                Cadastrar
+            </button>
+
+        </form> </div>
+
+<script>
+document
+.getElementById("cadastroForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefone = document.getElementById("telefone").value.trim(); 
+    const endereco = document.getElementById("endereco").value.trim(); 
+    const senha = document.getElementById("senha").value;
+
+    if(nome === "" || email === "" || telefone === "" || endereco === "" || senha === ""){
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    if(!email.includes("@")){
+        alert("Digite um e-mail válido.");
+        return;
+    }
+
+    if(senha.length < 6){
+        alert("A senha deve possuir no mínimo 6 caracteres.");
+        return;
+    }
+
+    // Salva o usuário estruturado com as 5 informações no localStorage
+    const usuario = {
+        nome,
+        email,
+        telefone,
+        endereco,
+        senha
+    };
+
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+
+    alert("Cadastro realizado com sucesso!");
+
+    document.getElementById("cadastroForm").reset();
+
+    // Redireciona para a tela de login externa
+    window.location.href = "Login preto.html";
+});
+</script>
+
+</body>
+</html>

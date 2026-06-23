@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro Perseus</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#ececec;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.home{
+    position:absolute;
+    top:40px;
+    left:60px;
+    width:55px;
+    height:55px;
+    background:#d4a62f;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:#000;
+    font-size:28px;
+}
+
+.container{
+    width:700px;
+    min-height:660px; /* Ajustado para acomodar os 5 campos perfeitamente */
+    background:#d3d3d3;
+    border:1px solid #555;
+    border-radius:40px;
+    padding:30px 50px;
+}
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+        .home-btn{
+            position:absolute;
+            top:20px;
+            left:20px;
+
+            width:80px;
+            height:80px;
+
+            border-radius:50%;
+            background:#d9d9d9;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            text-decoration:none;
+            font-size:40px;
+            color:black;
+        }
+.logo{
+    width:140px;
+    margin-bottom:10px;
+}
+
+.formulario{
+    width:360px;
+    margin:10px auto;
+}
+
+label{
+    display:block;
+    color:#7a7a7a;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:6px;
+    margin-top:14px;
+}
+
+input{
+    width:100%;
+    height:58px;
+    border-radius:28px;
+    border:3px solid #8a8a8a;
+    background:#c1bebe;
+    text-align:center;
+    font-size:18px;
+    color:#222;
+    outline:none;
+}
+
+input::placeholder{
+    color:#6f6f6f;
+}
+
+.botao{
+    width:100%;
+    height:58px;
+    border:none;
+    border-radius:28px;
+    background:#d4a62f;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:30px;
+}
+
+.botao:hover{
+    opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<a href="Login branco.html" class="home-btn">
+    <img src="/Imagens/casa 1.png" alt="Home">
+</a>
+
+<div class="container">
+
+    <img src="/Imagens/Logo perseus.png" alt="Logo Perseus" class="logo">
+
+    <form class="formulario" id="cadastroForm">
+
+        <label for="nome">Digite seu nome:</label>
+        <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Nome"
+            required
+        >
+
+        <label for="email">Digite seu E-mail:</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="email@gmail.com"
+            required
+        >
+
+        <label for="telefone">Digite seu telefone:</label>
+        <input
+            type="tel"
+            id="telefone"
+            name="telefone"
+            placeholder="(11) 99999-9999"
+            required
+        >
+
+        <label for="endereco">Digite seu endereço:</label>
+        <input
+            type="text"
+            id="endereco"
+            name="endereco"
+            placeholder="Endereço"
+            required
+        >
+
+        <label for="senha">Digite sua senha:</label>
+        <input
+            type="password"
+            id="senha"
+            name="senha"
+            placeholder="PASSWORD"
+            required
+            minlength="6"
+        >
+
+        <button type="submit" class="botao">
+            Cadastrar
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+
+document.getElementById("cadastroForm")
+.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefone = document.getElementById("telefone").value.trim(); // Captura o Telefone
+    const endereco = document.getElementById("endereco").value.trim();
+    const senha = document.getElementById("senha").value;
+
+    if(nome === ""){
+        alert("Digite seu nome.");
+        return;
+    }
+
+    if(email === ""){
+        alert("Digite seu e-mail.");
+        return;
+    }
+
+    if(telefone === ""){
+        alert("Digite seu telefone.");
+        return;
+    }
+
+    if(endereco === ""){
+        alert("Digite seu endereço.");
+        return;
+    }
+
+    if(senha.length < 6){
+        alert("A senha deve possuir no mínimo 6 caracteres.");
+        return;
+    }
+
+    // Grava todas as variáveis estruturadas no localStorage
+    const usuario = {
+        nome,
+        email,
+        telefone,
+        endereco,
+        senha
+    };
+
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+
+    alert("Cadastro realizado com sucesso!");
+
+    // Redireciona para a tela de login
+    window.location.href = "Login Branco.html";
+
+});
+
+</script>
+
+</body>
+</html>

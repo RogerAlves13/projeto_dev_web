@@ -1,0 +1,82 @@
+
+body {
+  	margin: 0;
+  	line-height: normal;
+}
+
+.popup-overlay {
+  	display: flex;
+  	flex-direction: column;
+  	position: fixed;
+  	inset: 0;
+}
+
+
+:root {
+  	
+  	/* Common Style Variables */
+  	
+  	/* Color */
+  	--color-black: #000;
+  	--color-darkgoldenrod: #af8f10;
+  	--color-gainsboro: rgba(217, 217, 217, 0.6);
+  	--color-goldenrod: #d4af37;
+  	--color-gray-100: #fdfdfd;
+  	--color-gray-200: #807979;
+  	--color-gray-300: #1d1b20;
+  	--color-gray-400: rgba(255, 255, 255, 0.8);
+  	--color-gray-500: rgba(255, 255, 255, 0);
+  	--color-gray-600: rgba(0, 0, 0, 0.1);
+  	--color-gray-700: rgba(15, 9, 9, 0.75);
+  	--color-silver: #c8c8c8;
+  	--color-white: #fff;
+  	
+  	/* Padding */
+  	--padding-12: 12px;
+  	
+  	/* BorderRadius */
+  	--br-20: 20px;
+  	--br-30: 30px;
+  	--br-50: 50px;
+  	
+  	/* Font */
+  	--font-inter: Inter, Arial, sans-serif;
+  	--font-roboto: Roboto, Arial, sans-serif;
+  	
+  	/* FontSize */
+  	--fs-15: 15px;
+  	--fs-16: 16px;
+  	--fs-30: 30px;
+  	--fs-40: 40px;
+  	
+  	/* Borders */
+  	--border-1: 1px solid var(--color-black);
+  	
+  	/* Gradients */
+  	--gradient-1: linear-gradient(180deg, var(--color-black), #666) padding-box, linear-gradient(180deg, var(--color-black), #666) border-box;
+  	
+  	/* WidthHeights */
+  	--height-1: 1px;
+  	--height-32: 32px;
+  	--height-40: 40px;
+  	--height-53: 53px;
+  	--height-109: 109px;
+  	--height-538: 538px;
+  	--width-32: 32px;
+  	--width-40: 40px;
+  	--width-53: 53px;
+  	--width-979: 979px;
+  	--width-980: 980px;
+  	
+  	/* LineHeights */
+  	--lh-24: 24px;
+  	
+  	
+  	--left-0: 0px;
+  	--left-19: 19px;
+  	--left--0_5: -0.5px;
+  	--top-0: 0px;
+  	--top-5: 5px;
+  	--top-20: 20px;
+  	
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Perseus</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            min-height:100vh;
+            background:#ffffff;
+            font-family:'IM Fell English', serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .home-btn{
+            position:absolute;
+            top:20px;
+            left:20px;
+
+            width:80px;
+            height:80px;
+
+            border-radius:50%;
+            background:#d9d9d94b;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            text-decoration:none;
+            font-size:40px;
+            color:black;
+        }
+
+        .container{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+       .login-box{
+    width:850px;
+    min-height:650px;
+
+    border-radius:50px;
+
+    background-color:#d9d9d9; /* gainsboro */
+
+    border:1px solid #000;
+
+    box-sizing:border-box;
+
+    padding:70px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+        .logo{
+            width:320px;
+            margin-bottom:50px;
+        }
+
+        form{
+            width:430px;
+        }
+
+        label{
+            display:block;
+            color:#d4a62f;
+            font-size:20px;
+            margin-bottom:10px;
+        }
+
+        input{
+    width:100%;
+    height:65px;
+
+    border-radius:30px;
+    border:1px solid #000;
+
+    background:#807979;
+
+    color:#000;
+
+    font-size:18px;
+
+    text-align:center;
+
+    margin-bottom:25px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    height:65px;
+
+    border-radius:30px;
+
+    border:1px solid #000;
+
+    background:#cfcfcf;
+
+    color:#d4af37;
+
+    font-family:'IM Fell English', serif;
+    font-size:24px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+        input::placeholder{
+            color:#b9b0b0;
+        }
+
+        .links{
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:25px;
+        }
+
+        .links a{
+            color:#d4a62f;
+            text-decoration:none;
+            font-size:18px;
+        }
+
+        .links a:hover{
+            text-decoration:underline;
+        }
+
+        button{
+            width:100%;
+            height:65px;
+
+            border:none;
+            border-radius:30px;
+
+            background:#666;
+
+            color:#d4a62f;
+
+            font-family:'IM Fell English', serif;
+            font-size:24px;
+            font-weight:bold;
+
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#777;
+        }
+
+        @media (max-width: 900px){
+
+            .login-box{
+                width:95%;
+                padding:40px 20px;
+            }
+
+            form{
+                width:100%;
+            }
+
+            .logo{
+                width:250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="Tela inicial - tema escuro.html" class="home-btn">🏠</a>
+
+    <div class="container">
+
+        <div class="login-box">
+
+            <!-- Troque pelo nome do seu arquivo -->
+            <img src="Imagens/Logo perseus.png" alt="Logo Perseus" class="logo">
+
+            <form id="loginForm">
+
+                <label for="email">Digite seu E-mail:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="email@gmail.com"
+                    required
+                >
+
+                <label for="senha">Digite sua senha:</label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="PASSWORD"
+                    required
+                >
+
+                <div class="links">
+                    <a href="#">Esqueceu sua senha?</a>
+                    <a href="Tela cadastro.html">Cadastre-se</a>
+                </div>
+
+                <button type="submit">
+                    Entrar
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("loginForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value;
+
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+    if(!usuario){
+        alert("Nenhum usuário cadastrado.");
+        return;
+    }
+
+    if(email === usuario.email && senha === usuario.senha){
+
+        localStorage.setItem("logado", "true");
+
+        alert("Login realizado com sucesso!");
+
+        // Troque pelo nome da sua página de perfil quando criar
+        window.location.href = "Tela de perfil tema claro.html";
+
+    }else{
+
+        alert("E-mail ou senha incorretos.");
+
+    }
+
+});
+    </script>
+
+</body>
+</html>

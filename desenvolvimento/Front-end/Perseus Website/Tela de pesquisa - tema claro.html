@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    
+    <link rel="stylesheet" href="Tela de pesquisa - tema claro global.css" />
+    <link rel="stylesheet"  href="Tela de pesquisa - tema claro.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
+    
+    <style>
+        .escolha-o-local, .escolha-o-local2 {
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            width: auto;
+        }
+        /* Customização opcional da cor do texto de dica */
+        .escolha-o-local::placeholder, .escolha-o-local2::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+        }
+        
+   </style>
+   <link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+    
+    <div class="group-parent">
+
+            <div class="group-container">
+    <div class="group-wrapper">
+
+        <div class="rectangle-div"></div>
+
+        <img src="/Imagens/alvo-de-tiro-de-atirador 1.png"
+             class="alvo-de-tiro-de-atirador-1-icon" alt="">
+
+        <div class="localizao-atual">Localização Atual</div>
+
+        <img src="/Imagens/estrela 2.png" class="estrela-1-icon" >
+
+        <div class="group-item"></div>
+        <div class="group-inner"></div>
+        <div class="line-div"></div>
+        <div class="group-child2"></div>
+        <div class="group-child3"></div>
+
+        <div class="jardim-maria">007 - Jardim Maria</div>
+        <div class="jardim-helena">008 - Jardim Helena</div>
+        <div class="jardim-gabriel">009 - Jardim Gabriel</div>
+        <div class="jardim-roberto">010 - Jardim Roberto</div>
+
+        <div class="image-1-parent">
+             
+                                    <img src="/Imagens/Proximidade.png" class="image-1-icon" alt="">
+                                    
+                                    <img src="/Imagens/Proximidade.png" class="image-2-icon" alt="">
+                                    
+                                    <img src="/Imagens/Proximidade.png" class="image-3-icon" alt="">
+                                    
+                                    <img src="/Imagens/Proximidade.png" class="image-4-icon" alt="">
+                                    
+        </div>
+
+    </div>
+
+    <img src="/Imagens/frente-do-onibus 6.png"
+         class="frente-do-onibus-2-icon" alt="">
+
+    <img src="/Imagens/frente-do-onibus 6.png"
+         class="frente-do-onibus-6-icon" alt="">
+
+    <img src="/Imagens/frente-do-onibus 6.png"
+         class="frente-do-onibus-7-icon" alt="">
+
+    <img src="/Imagens/frente-do-onibus 6.png"
+         class="frente-do-onibus-8-icon" alt="">
+</div>
+                           
+                                   
+            <div class="rectangle-container">
+                <div class="group-child9">
+                </div>
+                <img src="/Imagens/Baixar PERSEUS.png" class="baixar-perseus-icon" alt="" id="baixarPERSEUS">
+                
+                <div class="rectangle-parent2" id="groupContainer">
+                        <div class="group-child10">
+                        </div>
+                        
+                       <button class="login" id="btnLogin">
+    Login
+</button>
+                </div>
+                <img src="/Imagens/Logo perseus.png"class="whatsapp-image-2026-05-08-at-2-icon" alt="" id="whatsAppImage20260508At2">
+                
+                <img src="/Imagens/lua 2.png" class="lua-2-icon" id="lua" alt="">
+            
+            </div>
+            <div id="mapa" class="frame-child"></div>
+            
+            <div class="rectangle-parent3">
+                <div class="group-child11"></div>
+                <input type="text" id="inputPartidaClaro" class="escolha-o-local" placeholder="Escolha o local de partida">
+            </div>
+
+            <div class="rectangle-parent4">
+                <div class="group-child12"></div>
+                <input type="text" id="inputChegadaClaro" class="escolha-o-local2" placeholder="Escolha o local de chegada">
+            </div>
+
+            <div class="rectangle-parent5" id="botaoBuscarClaro" style="cursor: pointer;">
+                <div class="group-child13"></div>
+                <img src="/Imagens/lupa-arredondada 1.png" class="lupa-arredondada-1-icon" alt="">
+            </div>
+
+           
+            </div>
+            
+            
+
+            
+            
+            <div class="rectangle-parent6">
+                <img src="/Imagens/Barra funda.png" class="rectangle-icon" alt="">
+                
+                <div class="header">
+                        <div class="content">
+                            <div class="avatar">
+                                    <div class="background">
+                                    </div>
+                                    <div class="initial">P</div>
+                            </div>
+                            <div class="text">
+                                    <div class="header2">Estação mais próxima de você</div>
+                                    <div class="subhead">Estação Barra Funda</div>
+                            </div>
+                        </div>
+                </div>
+                <div class="rectangle-parent7">
+                        <div class="group-child14">
+                        </div>
+                        <div class="icon-button-standard">
+                            <div class="content2">
+                                    <div class="state-layer">
+                                        <img src="/Imagens/Onibus e carro.png" class="icon" alt="">
+                                        
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="frame-div">
+                <div class="search-docked-layout-parent">
+                        <div class="search-docked-layout">
+                            <div class="list">
+                                    <div class="list-item-1">
+                                        <div class="state-layer2">
+                                                <div class="leading-element">
+                                                </div>
+                                                <div class="content3">
+                                                    <div class="label-text">São Paulo</div>
+                                                    <div class="supporting-text">Clima ensolarado</div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-item-1">
+                                        <div class="state-layer2">
+                                                <div class="leading-element">
+                                                </div>
+                                                <div class="content4">
+                                                </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="supporting-text2">12</div>
+                        <div class="supporting-text3">14</div>
+                        <div class="supporting-text4">15</div>
+                        <div class="supporting-text5">16</div>
+                        <div class="supporting-text6">17</div>
+                        <div class="supporting-text7">13</div>
+                        <img src="/Imagens/icon.png" class="icon2" alt="">
+                        
+                        <img src="/Imagens/icon.png" class="icon3" alt="">
+                        
+                        <img src="/Imagens/icon.png"  class="icon4" alt="">
+                        
+                        <img src="/Imagens/icon.png"  class="icon5" alt="">
+                        
+                        <img src="/Imagens/icon.png"  class="icon6" alt="">
+                        
+                        <img src="/Imagens/icon.png"  class="icon7" alt="">
+                        
+                        <img src="/Imagens/icon.png"  class="icon8" alt="">
+                        
+                </div>
+            </div>
+    </div>
+    
+    <div id="desktopContainer" class="popup-overlay" style="display:none">
+            
+            <div class="desktop">
+                <div class="desktop-child">
+                </div>
+                <div class="desktop-item">
+                </div>
+                <div class="desktop-inner" id="popuprectangle2">
+                </div>
+                <img src="/Imagens/Logo perseus.png" class="whatsapp-image-2026-05-08-at-2-icon2" alt="">
+                
+                <img class="group-icon" alt="">
+                
+                <i class="baixando-aplicativo">Baixando Aplicativo!</i>
+                <i class="fechar" id="popupfecharText">Fechar</i>
+                <i class="aguarde-alguns-segundos">Aguarde alguns segundos para que a instalação esteja completa.</i>
+                <i class="a-equipe-perseus">A equipe PERSEUS agradece pela sua confiança.</i>
+            </div>
+            
+            
+    </div>
+    
+    <script>
+        document.getElementById("btnLogin").addEventListener("click", function () {
+    window.location.href = "Login Branco.html";
+});
+        function fecharPopup() {
+            var popup = document.getElementById("desktopContainer");
+            if(popup) {
+                popup.style.display = "none";
+            }
+        }
+
+        var popuprectangle2 = document.getElementById("popuprectangle2");
+        if(popuprectangle2) {
+            popuprectangle2.addEventListener("click", fecharPopup);
+        }
+
+        const popup = document.getElementById("desktopContainer");
+        const abrirPopup = document.getElementById("baixarPERSEUS");
+        const fecharBotao = document.getElementById("popupfecharText");
+        const fecharArea = document.getElementById("popuprectangle2");
+
+        if (abrirPopup) {
+            abrirPopup.addEventListener("click", function (e) {
+                e.preventDefault();
+                popup.style.display = "flex";
+            });
+        }
+
+        function fecharPopup(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            popup.style.display = "none";
+        }
+
+        if (fecharBotao) {
+            fecharBotao.addEventListener("click", fecharPopup);
+        }
+
+        if (fecharArea) {
+            fecharArea.addEventListener("click", fecharPopup);
+        }
+                    
+        var whatsAppImage20260508At2 = document.getElementById("whatsAppImage20260508At2");
+        if(whatsAppImage20260508At2) {
+            whatsAppImage20260508At2.addEventListener("click", function (e) {
+                    // Add your code here
+            });
+        }
+                    
+        var lua= document.getElementById("lua");
+        if(lua) {
+            lua.addEventListener("click", function (e) {
+                window.location.href = "Tela de pesquisa - tema escuro.html";
+            });
+        }
+    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="tela de pesquisa tema claro mapa.js"></script>
+    
+</body>
+</html>

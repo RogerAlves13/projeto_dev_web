@@ -1,0 +1,51 @@
+
+body {
+  	margin: 0;
+  	line-height: normal;
+}
+
+.popup-overlay {
+  	display: flex;
+  	flex-direction: column;
+  	position: fixed;
+  	inset: 0;
+}
+
+
+:root {
+  	
+  	/* Common Style Variables */
+  	
+  	/* Color */
+  	--color-black: #000;
+  	--color-gainsboro-100: #d9d9d9;
+  	--color-gainsboro-200: rgba(217, 217, 217, 0.3);
+  	--color-goldenrod-100: #d4af37;
+  	--color-goldenrod-200: rgba(212, 175, 55, 0.9);
+  	--color-gray-100: #807979;
+  	--color-gray-200: rgba(255, 255, 255, 0);
+  	--color-gray-300: rgba(0, 0, 0, 0.73);
+  	--color-white: #fff;
+  	
+  	/* Padding */
+  	--padding-80: 80px;
+  	--padding-120: 120px;
+  	
+  	/* BorderRadius */
+  	--br-30: 30px;
+  	
+  	/* Font */
+  	--font-inherit: inherit, Arial, sans-serif;
+  	--font-inter: Inter, Arial, sans-serif;
+  	
+  	/* FontSize */
+  	--fs-20: 20px;
+  	--fs-30: 30px;
+  	--fs-32: 32px;
+  	--fs-40: 40px;
+  	
+  	
+  	--left-0: 0px;
+  	--top-0: 0px;
+  	
+}

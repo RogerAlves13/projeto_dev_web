@@ -1,0 +1,159 @@
+/* Base da página com fundo original */
+.desktop {
+  	width: 100%;
+  	height: 1080px;
+  	position: relative;
+  	background-color: var(--color-white, #fff);
+  	overflow: hidden;
+  	font-family: var(--font-inter, 'Inter', sans-serif);
+}
+
+/* Container Principal - Mantido tamanho 878px x 741px e centralização exata */
+.desktop-child2 {
+  	position: absolute;
+  	top: calc(50% - 370.5px);
+  	left: calc(50% - 439px);
+  	border-radius: 50px;
+  	background-color: #efe7cb; /* Cor bege clara da barra lateral original */
+  	border: 1px solid var(--color-gray-200, #807979);
+  	box-sizing: border-box;
+  	width: 878px;
+  	height: 741px;
+    display: flex; 
+    overflow: hidden;
+}
+
+/* Painel Esquerdo (Mantendo a mesma cor de fundo bege do card) */
+.perfil-esquerda {
+    width: 380px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+.avatar-container {
+    margin-top: 10px;
+}
+
+.magnific-digital-illustration-icon {
+  	width: 143px;
+  	height: 139px;
+  	border-radius: 100px;
+  	object-fit: cover;
+  	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.info-topo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.joo-da-siva {
+  	font-size: 36px;
+  	font-family: var(--font-inika, 'Inika', serif);
+  	color: var(--color-goldenrod, #d4af37);
+  	margin: 0 0 8px 0;
+}
+
+.joaosilvaemailcom {
+  	font-size: 20px;
+  	text-decoration: underline;
+  	font-family: var(--font-inika, 'Inika', serif);
+  	color: var(--color-black, #000); /* Cor preta original */
+}
+
+.line-div {
+  	width: 85%;
+  	height: 1px;
+  	border-top: 1px solid var(--color-gray-100, #fdfdfd);
+  	margin: 35px 0;
+  	opacity: 0.7;
+}
+
+.whatsapp-image-2026-05-08-at-2-icon {
+  	width: 197px;
+  	height: 131px;
+  	object-fit: cover;
+    margin-top: auto; 
+}
+
+/* Painel Direito - Onde ficam os inputs brancos originais */
+.perfil-direita {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-white, #fff); /* Fundo branco original da área de inputs */
+    padding: 0 50px 0 30px;
+    box-sizing: border-box;
+    border-left: 1px solid var(--color-gray-200, #807979);
+}
+
+.formulario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px; 
+}
+
+.linha-campo {
+    display: flex;
+    align-items: center;
+}
+
+.campo-label {
+    width: 160px; 
+    font-size: 16px;
+    color: var(--color-black, #000); /* Labels pretas originais */
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Inputs brancos originais corrigidos com as propriedades de borda e opacidade corretas */
+.campo-input {
+    flex: 1;
+    height: 29px;
+    border-radius: var(--br-30, 30px);
+    border: 1px solid var(--color-black, #000);
+    background-color: var(--color-white, #fff);
+    padding: 0 20px;
+    font-size: 16px;
+    color: var(--color-black, #000);
+    outline: none;
+    text-align: center;
+    box-sizing: border-box;
+    opacity: 0.6; /* Mantendo o efeito de opacidade original que tinhas configurado */
+}
+
+/* Botão Home (Mantido intacto na posição original) */
+.ellipse-parent {
+  	position: absolute;
+  	top: 38px;
+  	left: 51px;
+  	width: 78px;
+  	height: 87px;
+  	cursor: pointer;
+  	z-index: 10;
+}
+
+.ellipse-div {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	border-radius: 50%;
+  	background-color: var(--color-gainsboro-100, #d9d9d9);
+  	width: 78px;
+  	height: 87px;
+}
+
+.casa-1-icon {
+  	position: absolute;
+  	top: 11.31px;
+  	left: 9.96px;
+  	width: 58.1px;
+  	height: 58.1px;
+  	object-fit: cover;
+}

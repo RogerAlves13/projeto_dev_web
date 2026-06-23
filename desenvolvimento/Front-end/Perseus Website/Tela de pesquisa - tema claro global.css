@@ -1,0 +1,111 @@
+
+body {
+  	margin: 0;
+  	line-height: normal;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+:root {
+  	
+  	/* Common Style Variables */
+  	
+  	/* Color */
+  	--color-black: #000;
+  	--color-darkgoldenrod: #af8f10;
+  	--color-darkslategray: #49454f;
+  	--color-gainsboro-100: #d9d9d9;
+  	--color-gainsboro-200: rgba(217, 217, 217, 0.6);
+  	--color-goldenrod: #d4af37;
+  	--color-gray-100: #fdfdfd;
+  	--color-gray-200: #807979;
+  	--color-gray-300: #1d1b20;
+  	--color-gray-400: rgba(255, 255, 255, 0);
+  	--color-silver: #c8c8c8;
+  	--color-white: #fff;
+  	
+  	/* Gap */
+  	--gap-12: 12px;
+  	
+  	/* Padding */
+  	--padding-10: 10px;
+  	--padding-12: 12px;
+  	--padding-16: 16px;
+  	
+  	/* BorderRadius */
+  	--br-4: 4px;
+  	--br-12: 12px;
+  	--br-20: 20px;
+  	--br-30: 30px;
+  	--br-50: 50px;
+  	
+  	/* Font */
+  	--font-inter: Inter, Arial, sans-serif;
+  	--font-roboto: Roboto, Arial, sans-serif;
+  	
+  	/* FontSize */
+  	--fs-14: 14px;
+  	--fs-15: 15px;
+  	--fs-16: 16px;
+  	--fs-30: 30px;
+  	--fs-40: 40px;
+  	
+  	/* Borders */
+  	--border-1: 1px solid var(--color-black);
+  	
+  	/* Shadows */
+  	--shadow-drop: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  	
+  	/* WidthHeights */
+  	--height-1: 1px;
+  	--height-20: 20px;
+  	--height-40: 40px;
+  	--height-49: 49px;
+  	--height-53: 53px;
+  	--height-109: 109px;
+  	--height-538: 538px;
+  	--min-h-32: 32px;
+  	--min-h-48: 48px;
+  	--width-23: 23px;
+  	--width-40: 40px;
+  	--width-49: 49px;
+  	--width-53: 53px;
+  	--width-979: 979px;
+  	--width-980: 980px;
+  	
+  	/* LineHeights */
+  	--lh-20: 20px;
+  	--lh-24: 24px;
+  	
+  	/* LetterSpacings */
+  	--ls-0_25: 0.25px;
+  	
+  	
+  	--left-0: 0px;
+  	--left-19: 19px;
+  	--left-38: 38px;
+  	--left-39: 39px;
+  	--left-43: 43px;
+  	--left-112: 112px;
+  	--left--0_5: -0.5px;
+  	--left-44_5: 44.5px;
+  	--top-0: 0px;
+  	--top-5: 5px;
+  	--top-20: 20px;
+  	--top-calc50-5: calc(50% - 5px);
+  	
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    
+    <link rel="stylesheet" href="Tela de Perfil tema claro.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inika:wght@400&display=swap" />
+</head>
+<body>
+    
+    <div class="ellipse-parent" id="groupContainer5" style="cursor: pointer;">
+            <div class="ellipse-div"></div>
+            <img class="casa-1-icon" src="Imagens/casa 1.png" alt="Home">
+    </div>
+
+    <div class="desktop-child2">
+              
+              <div class="rectangle-div"></div>
+              
+              <div class="perfil-esquerda">
+                  <div class="avatar-container">
+                      <img class="magnific-digital-illustration-icon" src="Imagens/Perfil.png" alt="Foto de Perfil">
+                  </div>
+                  <div class="info-topo">
+                      <h2 class="joo-da-siva" id="nomeTopo">Roger Henrique</h2>
+                      <a class="joaosilvaemailcom" id="emailTopo" href="mailto:contato@perseus.com" target="_blank">contato@perseus.com</a>
+                  </div>
+                  
+                  <div class="line-div"></div>
+                  
+                  <img class="whatsapp-image-2026-05-08-at-2-icon" src="Imagens/Logo perseus.png" alt="Logo Perseus">
+              </div>
+
+              <div class="perfil-direita">
+                  <div class="formulario">
+                      <div class="linha-campo">
+                          <label class="campo-label">NOME COMPLETO </label>
+                          <input type="text" class="campo-input" id="perfilNome" value="Roger Henrique Alves Campos" readonly>
+                      </div>
+
+                      <div class="linha-campo">
+                          <label class="campo-label">ENDEREÇO</label>
+                          <input type="text" class="campo-input" id="perfilEndereco" value="Rua Exemplo, 123 - São Paulo" readonly>
+                      </div>
+
+                      <div class="linha-campo">
+                          <label class="campo-label">TELEFONE </label>
+                          <input type="text" class="campo-input" id="perfilTelefone" value="(11) 99999-9999" readonly>
+                      </div>
+
+                      <div class="linha-campo">
+                          <label class="campo-label">E-MAIL</label>
+                          <input type="email" class="campo-input" id="perfilEmail" value="contato@perseus.com" readonly>
+                      </div>
+                  </div>
+              </div>
+
+    </div>
+    
+    <script>
+        // O código tenta buscar sua sessão, mas se você não estiver logado,
+        // ele NÃO bloqueia a tela para você conseguir analisar o seu CSS perfeitamente.
+        const dadosUsuario = JSON.parse(localStorage.getItem("usuario"));
+
+        if (dadosUsuario && localStorage.getItem("logado") === "true") {
+            document.getElementById("nomeTopo").textContent = dadosUsuario.nome;
+            document.getElementById("emailTopo").textContent = dadosUsuario.email;
+            document.getElementById("emailTopo").href = `mailto:${dadosUsuario.email}`;
+
+            document.getElementById("perfilNome").value = dadosUsuario.nome;
+            document.getElementById("perfilEmail").value = dadosUsuario.email;
+            
+            if (dadosUsuario.endereco) {
+                const num = dadosUsuario.numero ? `, Nº ${dadosUsuario.numero}` : '';
+                document.getElementById("perfilEndereco").value = `${dadosUsuario.endereco}${num}`;
+            } else {
+                document.getElementById("perfilEndereco").value = "Não informado";
+            }
+
+            if (dadosUsuario.telefone) {
+                document.getElementById("perfilTelefone").value = dadosUsuario.telefone;
+            } else {
+                document.getElementById("perfilTelefone").value = "Não informado";
+            }
+        }
+
+        // Ação do Botão Home / Logout
+        var groupContainer5 = document.getElementById("groupContainer5");
+        if(groupContainer5) {
+                groupContainer5.addEventListener("click", function (e) {
+                    
+                    window.location.href = "Tela inicial - tema claro.html";
+                });
+        }
+    </script>
+</body>
+</html>

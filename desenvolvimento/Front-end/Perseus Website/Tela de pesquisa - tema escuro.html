@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    
+    <link rel="stylesheet" href="Tela de pesquisa - tema escuro global.css" />
+    <link rel="stylesheet" href="Tela de pesquisa - tema escuro.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+    
+    <div class="tela-de-pesquisa">
+          
+            <div id="mapa" class="frame-child"></div>
+            
+            <div class="search-partida-container">
+                <div class="group-child11"></div>
+                <input type="text" id="inputPartidaEscuro" class="escolha-o-local" placeholder="Escolha o local de partida">
+            </div>
+
+            <div class="search-chegada-container">
+                <div class="group-child12"></div>
+                <input type="text" id="inputChegadaEscuro" class="escolha-o-local2" placeholder="Escolha o local de chegada">
+            </div>
+
+            <div class="search-btn-container" id="botaoBuscarEscuro">
+                <div class="group-child13"></div>
+                <img src="/Imagens/lupa-arredondada 1.png" class="lupa-arredondada-1-icon" alt="">
+            </div>
+
+            <img class="image-4-icon" alt="">
+            
+            <div class="group-parent">
+                <div class="group-wrapper">
+                        <div class="group-wrapper">
+                            <div class="group-wrapper">
+                                    <div class="group-wrapper">
+                                        <div class="group-wrapper">
+                                                <div class="rectangle-div"></div>
+                                                <img src="/Imagens/alvo-de-tiro-de-atirador 1.png" class="alvo-de-tiro-de-atirador-1-icon" alt="">
+                                                
+                                                <div class="localizao-atual">Localização Atual</div>
+                                                <img src="/Imagens/estrela 2.png" class="estrela-1-icon" alt="">
+                                        </div>
+                                        <div class="line-div"></div>
+                                        <div class="group-child2"></div>
+                                        <div class="group-child3"></div>
+                                        <div class="group-child4"></div>
+                                        <div class="group-child5"></div>
+                                    </div>
+                                    <div class="Lugares"></div>
+                                    <div class="jardim-maria">007  -   Jardim Maria</div>
+                                    <div class="jardim-helena">008  -   Jardim Helena</div>
+                                    <div class="jardim-gabriel">009  -   Jardim Gabriel</div>
+                                    <div class="jardim-roberto">010  -   Jardim Roberto</div>
+                            </div>
+                            <div class="image-1-parent">
+                                    <img src="/Imagens/Proximidade.png" class="image-1-icon" alt="">
+                                    <img src="/Imagens/Proximidade.png" class="image-2-icon" alt="">
+                                    <img src="/Imagens/Proximidade.png" class="image-3-icon" alt="">
+                                    <img src="/Imagens/Proximidade.png" class="image-4-icon2" alt="">
+                                    
+                                    <div class="div">5</div>
+                                    <div class="div2">5</div>
+                                    <div class="div3">5</div>
+                                    <div class="div4">5</div>
+                                    <div class="minutos">minutos</div>
+                                    <div class="minutos2">minutos</div>
+                                    <div class="minutos3">minutos</div>
+                                    <div class="minutos4">minutos</div>
+                            </div>
+                        </div>
+                </div>
+                <img src="/Imagens/frente-do-onibus 6.png" class="frente-do-onibus-2-icon" alt="">
+                <img src="/Imagens/frente-do-onibus 6.png" class="frente-do-onibus-6-icon" alt="">
+                <img src="/Imagens/frente-do-onibus 6.png" class="frente-do-onibus-7-icon" alt="">
+                <img src="/Imagens/frente-do-onibus 6.png" class="frente-do-onibus-8-icon" alt="">
+            </div>
+            <div class="group-parent3">
+                <div class="company-wrapper">
+                        <div class="company">
+                            <div class="sol-1-1"></div>
+                        </div>
+                        <div class="frame-div">
+    <div class="search-docked-layout-parent">
+
+        <div class="search-docked-layout">
+            <div class="list">
+
+                <div class="list-item-1">
+                    <div class="state-layer2">
+                        <div class="leading-element"></div>
+
+                        <div class="content3">
+                            <div class="label-text">São Paulo</div>
+                            <div class="supporting-text">
+                                Clima ensolarado
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-item-1">
+                    <div class="state-layer2">
+                        <div class="leading-element"></div>
+                        <div class="content4"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="supporting-text2">12</div>
+        <div class="supporting-text7">13</div>
+        <div class="supporting-text3">14</div>
+        <div class="supporting-text4">15</div>
+        <div class="supporting-text5">16</div>
+        <div class="supporting-text6">17</div>
+
+        <img src="/Imagens/icon.png" class="icon2" alt="">
+        <img src="/Imagens/icon.png" class="icon7" alt="">
+        <img src="/Imagens/icon.png" class="icon3" alt="">
+        <img src="/Imagens/icon.png" class="icon4" alt="">
+        <img src="/Imagens/icon.png" class="icon5" alt="">
+        <img src="/Imagens/icon.png" class="icon6" alt="">
+    </div>
+</div>
+                </div>
+                <div class="rectangle-parent3">
+                    <div class="group-child6"></div>
+                    <img style="cursor: pointer;" src="/Imagens/Baixar PERSEUS.png" class="baixar-perseus-icon" alt="" id="baixarPERSEUS">
+                    
+                    <a href="Login preto.html" class="rectangle-parent4">
+                        <div class="group-child7"></div>
+                        <div class="login">Login</div>
+                    </a>
+                    
+                    <img src="/Imagens/Logo perseus.png" class="whatsapp-image-2026-05-08-at-2-icon" alt="" id="whatsAppImage20260508At2">
+                    <img src="/Imagens/sol 2.png" class="sol-1-icon" alt="" id="sol1Icon">
+                </div>
+            </div>
+            <div class="rectangle-parent5">
+                <img src="/imagens/Barra funda.png" class="rectangle-icon" alt="">
+                
+                <div class="header">
+                        <div class="content">
+                            <div class="avatar">
+                                    <div class="background"></div>
+                                    <div class="initial">P</div>
+                            </div>
+                            <div class="text">
+                                    <div class="header2">Estação mais próxima de você</div>
+                                    <div class="subhead">Estação Barra Funda</div>
+                            </div>
+                        </div>
+                </div>
+                <div class="rectangle-parent6">
+                        <div class="group-child8"></div>
+                        <div class="icon-button-standard">
+                            <div class="content2">
+                                    <div class="state-layer">
+                                        <img src="/Imagens/Onibus e carro.png" class="icon" alt="">
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+    </div>
+    
+    <div id="desktopContainer" class="popup-overlay" style="display:none">
+            <div class="desktop">
+                <div class="desktop-child"></div>
+                <div class="desktop-child"></div>
+                <div class="desktop-inner" id="popuprectangle"></div>
+                <img src="/Imagens/Logo perseus.png" class="whatsapp-image-2026-05-08-at-2-icon2" alt="">
+                <img class="footer-container-icon" alt="">
+                
+                <h2 class="baixando-aplicativo">Baixando Aplicativo!</h2>
+                <span class="fechar" id="popupfecharText">Fechar</span>
+                <p class="aguarde-alguns-segundos">Aguarde alguns segundos para que a instalação esteja completa.</p>
+                <p class="a-equipe-perseus">A equipe PERSEUS agradece pela sua confiança.</p>
+            </div>
+    </div>
+    
+    <script>
+        var popupfecharText = document.getElementById("popupfecharText");
+        if(popupfecharText) {
+            popupfecharText.addEventListener("click", function () {
+                document.getElementById("desktopContainer").style.display = "none";
+            });
+        }
+                    
+        var baixarPERSEUS = document.getElementById("baixarPERSEUS");
+        if(baixarPERSEUS) {
+            baixarPERSEUS.addEventListener("click", function () {
+                    var popup = document.getElementById("desktopContainer");
+                    if(!popup) return;
+                    var popupStyle = popup.style;
+                    if(popupStyle) {
+                        popupStyle.display = "flex";
+                        popupStyle.zIndex = 100;
+                        popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+                        popupStyle.alignItems = "center";
+                        popupStyle.justifyContent = "center";
+                    }
+                    popup.setAttribute("closable", "");
+                    
+                    var onClick = popup.onClick || function(e) {
+                        if(e.target === popup && popup.hasAttribute("closable")) {
+                                popupStyle.display = "none";
+                        }
+                    };
+                    popup.addEventListener("click", onClick);
+            });
+        }
+                    
+        var whatsAppImage20260508At2 = document.getElementById("whatsAppImage20260508At2");
+        if(whatsAppImage20260508At2) {
+            whatsAppImage20260508At2.addEventListener("click", function (e) {
+                    // Adicione o seu código aqui
+            });
+        }
+        var sol1Icon = document.getElementById("sol1Icon");
+        if(sol1Icon) {
+            sol1Icon.addEventListener("click", function (e) {
+                window.location.href = "Tela de pesquisa - tema claro.html";
+            });
+        }
+    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="tela de pesquisa  tema escuro mapa.js"></script>
+</body>
+</html>

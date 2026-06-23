@@ -1,0 +1,518 @@
+.desktop {
+  	width: 100%;
+    height: 1954px;
+  	position: relative;
+  	background-color: var(--color-white);
+  	
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	min-height: 1080px;
+  	text-align: left;
+  	font-size: var(--fs-20);
+  	color: var(--color-black);
+  	font-family: var(--font-inter);
+}
+.container {
+  	max-width: 100%;
+  	background-color: var(--color-gray-300);
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+}
+.intro {
+  	align-self: stretch;
+  	background-color: var(--color-white);
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	color: var(--color-goldenrod-100);
+}
+.hero {
+  	align-self: stretch;
+  	background-color: var(--color-gainsboro-100);
+  	display: flex;
+  	align-items: center;
+  	padding: var(--padding-120) var(--padding-120) var(--padding-80);
+}
+.group-parent {
+  	height: 95px;
+  	width: 1506px;
+  	position: relative;
+}
+.rectangle-parent {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	width: 1506px;
+  	height: 95px;
+}
+.group-child {
+  	position: absolute;
+  	top: 8px;
+  	left: 0px;
+  	border-radius: var(--br-30);
+  	background-color: var(--color-gray-100);
+  	width: 1506px;
+  	height: 87px;
+}
+.baixar-perseus-icon {
+  	position: absolute;
+  	top: 44px;
+  	left: 1334.02px;
+  	width: 132.9px;
+  	height: 20.7px;
+}
+.rectangle-group {
+  	position: absolute;
+  	top: 27px;
+  	left: 1174px;
+  	width: 145px;
+  	height: 59px;
+  	cursor: pointer;
+}
+.group-item {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	border-radius: var(--br-30);
+  	background-color: var(--color-gainsboro-200);
+  	width: 145px;
+  	height: 50.6px;
+}
+.login {
+  	position: absolute;
+  	top: 14.05px;
+  	left: 44.05px;
+  	display: inline-block;
+  	width: 56px;
+  	height: 45px;
+}
+.whatsapp-image-2026-05-08-at-2-icon {
+  	position: absolute;
+  	top: 0px;
+  	left: 89px;
+  	width: 143px;
+  	height: 95px;
+  	object-fit: cover;
+  	cursor: pointer;
+}
+.group-container {
+  	position: absolute;
+  	top: 24px;
+  	left: 301px;
+  	width: 796px;
+  	height: 54px;
+  	font-size: var(--fs-30);
+  	color: var(--color-black);
+}
+.rectangle-container {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	width: 796px;
+  	height: 54px;
+}
+.group-inner {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	border-radius: 50px;
+  	background-color: var(--color-gainsboro-100);
+  	width: 796px;
+  	height: 54px;
+}
+.escolha-o-local {
+  	position: absolute;
+  	top: 8.11px;
+  	left: 23px;
+  	white-space: pre-wrap;
+  	display: inline-block;
+  	width: 773px;
+  	height: 25.5px;
+}
+.exchange-1-icon {
+  	position: absolute;
+  	top: 6px;
+  	left: 430px;
+  	width: 43px;
+  	height: 43px;
+  	object-fit: cover;
+  	cursor: pointer;
+}
+.lua-1-icon {
+  	position: absolute;
+  	top: 28px;
+  	left: 31px;
+  	width: 42px;
+  	height: 42px;
+  	object-fit: cover;
+  	cursor: pointer;
+}
+.feature {
+  	align-self: stretch;
+  	background-color: var(--color-gainsboro-100);
+  	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+  	padding: 0px var(--padding-120) var(--padding-120);
+  	gap: 20px;
+  	font-size: var(--fs-32);
+  	color: var(--color-black);
+}
+.image-icon {
+  	height: 377.1px;
+  	width: 559px;
+  	position: relative;
+  	object-fit: cover;
+}
+.por-qu-baixar-container {
+  	height: 288px;
+  	width: 611px;
+  	position: relative;
+  	display: inline-block;
+  	flex-shrink: 0;
+}
+.por-qu-baixar {
+  	font-weight: 800;
+}
+.span {
+  	font-family: var(--font-inter);
+}
+.perseus2 {
+  	color: var(--color-goldenrod-200);
+}
+.o-perseus-no-te-d-apenas-um {
+  	font-size: var(--fs-20);
+}
+.interests {
+  	align-self: stretch;
+  	background-color: var(--color-white);
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	font-size: 24px;
+}
+.body {
+  	align-self: stretch;
+  	background-color: var(--color-gainsboro-100);
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	padding: var(--padding-80) var(--padding-120);
+}
+.main-content {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	gap: 24px;
+}
+.descubra-o-que-h-de-novidade {
+  	width: 536.2px;
+  	height: 35.3px;
+  	position: relative;
+}
+.por-que-pular-container {
+  	align-self: stretch;
+  	height: 268px;
+  	position: relative;
+  	display: inline-block;
+  	flex-shrink: 0;
+}
+.por-que-pular {
+  	margin: 0;
+}
+.rotas-inteligentes-otimizao {
+  	margin: 0;
+  	font-family: inherit;
+  	font-size: inherit;
+  	padding-left: 32px;
+}
+.previso-do-tempo {
+  	margin-bottom: 0px;
+}
+.gallery {
+  	align-self: stretch;
+  	background-color: var(--color-gainsboro-100);
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 0px var(--padding-120);
+  	gap: 32px;
+}
+.clima-quente-1-icon {
+  	height: 299px;
+  	width: 300px;
+  	position: relative;
+  	object-fit: cover;
+}
+.frente-do-onibus-1-icon {
+  	height: 299px;
+  	width: 298px;
+  	position: relative;
+  	object-fit: cover;
+}
+.experience {
+  	align-self: stretch;
+  	height: 330px;
+  	position: relative;
+  	background-color: var(--color-gainsboro-100);
+}
+.gemini-generated-image-2nphfn2-icon {
+  	position: absolute;
+  	top: 22.65px;
+  	left: 83px;
+  	width: 260px;
+  	height: 142px;
+  	object-fit: cover;
+  	flex-shrink: 0;
+}
+.perseus-empresa-criada-container {
+  	position: absolute;
+  	bottom: 96.35px;
+  	left: 66px;
+  	display: inline-block;
+  	width: 392px;
+  	height: 90px;
+  	flex-shrink: 0;
+  	font-size: 17px;
+  	color: var(--color-goldenrod-200);
+}
+.span3 {
+  	color: var(--color-white);
+}
+.perseus-todos {
+  	font-size: 14px;
+}
+.baixe-nosso-aplicativo {
+  	position: absolute;
+  	top: 120px;
+  	left: 499.67px;
+  	letter-spacing: 0.1em;
+  	flex-shrink: 0;
+}
+.perseus3 {
+  	position: absolute;
+  	top: 160.65px;
+  	left: 833px;
+  	text-decoration: underline;
+  	letter-spacing: 0.1em;
+  	font-weight: 800;
+  	color: var(--color-goldenrod-100);
+  	flex-shrink: 0;
+}
+.comunidade {
+  	position: absolute;
+  	top: 199.65px;
+  	left: 833px;
+  	text-decoration: underline;
+  	letter-spacing: 0.1em;
+  	font-weight: 800;
+  	flex-shrink: 0;
+}
+.sobre-a-empresa {
+  	position: absolute;
+  	top: 123.65px;
+  	left: 833px;
+  	letter-spacing: 0.1em;
+  	flex-shrink: 0;
+}
+.google-play-1-icon {
+  	position: absolute;
+  	top: 151.65px;
+  	left: 501px;
+  	width: 86px;
+  	height: 86px;
+  	object-fit: cover;
+  	flex-shrink: 0;
+}
+.loja-de-aplicativos-1-1 {
+  	position: absolute;
+  	top: 148.65px;
+  	left: 619px;
+  	width: 86px;
+  	height: 86px;
+  	object-fit: cover;
+  	flex-shrink: 0;
+}
+
+
+.desktop2 {
+  	width: 1280px;
+  	height: 1080px;
+  	position: relative;
+  	background-color: var(--color-gray-200);
+  	overflow-y: auto;
+  	max-width: 90%;
+  	max-height: 90%;
+  	overflow: auto;
+  	text-align: center;
+  	font-size: var(--fs-40);
+  	color: var(--color-black);
+  	font-family: var(--font-inter);
+}
+.desktop-child {
+  	position: absolute;
+  	top: calc(50% - 349px);
+  	left: calc(50% - 430px);
+  	border-radius: 50px;
+  	background: linear-gradient(180deg, var(--color-black), #666) padding-box, linear-gradient(180deg, var(--color-black), #666) border-box;
+  	border: 1px solid transparent;
+  	box-sizing: border-box;
+  	width: 878px;
+  	height: 689px;
+  	flex-shrink: 0;
+}
+.desktop-item {
+  	position: absolute;
+  	top: calc(50% - 349px);
+  	left: calc(50% - 430px);
+  	border-radius: 50px;
+  	background: linear-gradient(180deg, var(--color-black), var(--color-gray-100) 0.01%) padding-box, linear-gradient(180deg, var(--color-black), #666) border-box;
+  	border: 1px solid transparent;
+  	box-sizing: border-box;
+  	width: 878px;
+  	height: 689px;
+  	flex-shrink: 0;
+}
+.desktop-inner {
+  	position: absolute;
+  	top: calc(50% + 173px);
+  	left: calc(50% - 246px);
+  	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  	border-radius: 50px;
+  	background: linear-gradient(180deg, var(--color-black), #666 0.01%) padding-box, linear-gradient(180deg, var(--color-black), #666) border-box;
+  	border: 1px solid transparent;
+  	box-sizing: border-box;
+  	width: 511px;
+  	height: 126px;
+  	cursor: pointer;
+  	flex-shrink: 0;
+}
+.whatsapp-image-2026-05-08-at-2-icon2 {
+  	position: absolute;
+  	top: 100px;
+  	left: 468px;
+  	width: 345px;
+  	height: 230px;
+  	object-fit: cover;
+  	flex-shrink: 0;
+}
+.footer-container-icon {
+  	position: absolute;
+  	top: 282px;
+  	left: -548px;
+  	width: 434.6px;
+  	height: 148px;
+  	flex-shrink: 0;
+}
+.baixando-aplicativo {
+  	position: absolute;
+  	top: 330px;
+  	left: 436px;
+  	font-weight: 800;
+  	flex-shrink: 0;
+}
+.fechar {
+  	position: absolute;
+  	top: 640px;
+  	left: 572px;
+  	font-weight: 800;
+  	flex-shrink: 0;
+}
+.aguarde-alguns-segundos {
+  	position: absolute;
+  	top: 397px;
+  	left: 225px;
+  	font-size: var(--fs-30);
+  	display: flex;
+  	font-weight: 800;
+  	align-items: center;
+  	justify-content: center;
+  	width: 863px;
+  	height: 101px;
+  	flex-shrink: 0;
+}
+.a-equipe-perseus {
+  	position: absolute;
+  	top: 493px;
+  	left: 225px;
+  	font-size: var(--fs-30);
+  	display: flex;
+  	font-weight: 800;
+  	align-items: center;
+  	justify-content: center;
+  	width: 863px;
+  	height: 101px;
+  	flex-shrink: 0;
+}
+
+
+
+.usuario-menu {
+    position: absolute;
+    top: 25px;
+    left: 1550px;
+    width: 54px;
+    height: 54px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.usuario-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 2px solid #D4AF37;
+    background: rgba(217,217,217,0.8);
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.usuario-popup {
+    display: none;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 260px;
+    background: #ffffff;
+    border: 2px solid #D4AF37;
+    border-radius: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.usuario-popup.ativo {
+    display: block;
+}
+
+.popup-nome {
+    color: #D4AF37;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.popup-email {
+    color: #000;
+    font-size: 14px;
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+.btn-logout {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background: #D4AF37;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,169 @@
+/* Base da página com fundo cinza escuro/grafite */
+.desktop {
+    width: 100%;
+    height: 1080px;
+    position: relative;
+    background-color: #2b2b2b; /* Preto mais claro (Grafite) */
+    overflow: hidden;
+    font-family: var(--font-inter, 'Inter', sans-serif);
+}
+
+/* Container Principal - Mantido tamanho 878px x 741px e centralização exata */
+.desktop-child2 {
+    position: absolute;
+    top: calc(50% - 370.5px);
+    left: calc(50% - 439px);
+    border-radius: 50px;
+    
+    /* Fundo do card em degradê com tons de preto mais claros e suaves */
+    background: linear-gradient(180deg, #333333 0%, #222222 100%); 
+    
+    border: 1px solid #807979; /* Cor 807979 da imagem_1d7178.png */
+    box-sizing: border-box;
+    width: 878px;
+    height: 741px;
+    display: flex; 
+    overflow: hidden;
+}
+
+/* Painel Esquerdo */
+.perfil-esquerda {
+    width: 380px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.15); /* Sutil divisão escura */
+}
+
+.avatar-container {
+    margin-top: 10px;
+}
+
+.magnific-digital-illustration-icon {
+    width: 143px;
+    height: 139px;
+    border-radius: 100px;
+    object-fit: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    border: 2px solid #d4af37; /* Destaque em dourado D4AF37 no avatar */
+}
+
+.info-topo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.joo-da-siva {
+    font-size: 36px;
+    font-family: var(--font-inika, 'Inika', serif);
+    color: #d4af37; /* Cor D4AF37 da imagem_1d7178.png */
+    margin: 0 0 8px 0;
+}
+
+.joaosilvaemailcom {
+    font-size: 20px;
+    text-decoration: underline;
+    font-family: var(--font-inika, 'Inika', serif);
+    color: #807979; /* Cinza 807979 da imagem_1d7178.png */
+}
+
+.line-div {
+    width: 85%;
+    height: 1px;
+    border-top: 1px solid #807979; 
+    margin: 35px 0;
+    opacity: 0.5;
+}
+
+.whatsapp-image-2026-05-08-at-2-icon {
+    width: 197px;
+    height: 131px;
+    object-fit: cover;
+    margin-top: auto; 
+}
+
+/* Painel Direito - Onde ficam os inputs */
+.perfil-direita {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #282828; /* Preto mais claro interno para dar contraste com o card */
+    padding: 0 50px 0 30px;
+    box-sizing: border-box;
+    border-left: 1px solid #807979;
+}
+
+.formulario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px; 
+}
+
+.linha-campo {
+    display: flex;
+    align-items: center;
+}
+
+.campo-label {
+    width: 160px; 
+    font-size: 16px;
+    color: #d4af37; /* Labels em dourado D4AF37 */
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Inputs com fundo preto claro para legibilidade */
+.campo-input {
+    flex: 1;
+    height: 29px;
+    border-radius: 30px;
+    border: 1px solid #606060; /* Borda cinza 606060 da imagem_1d7178.png */
+    
+    /* Fundo interno do input em um preto bem suave */
+    background: linear-gradient(180deg, #1f1f1f 0%, #262626 100%);
+    
+    padding: 0 20px;
+    font-size: 16px;
+    color: #ffffff; /* Texto interno em branco FFFFFF */
+    outline: none;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Botão Home */
+.ellipse-parent {
+    position: absolute;
+    top: 38px;
+    left: 51px;
+    width: 78px;
+    height: 87px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.ellipse-div {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: #606060; /* Fundo do botão com cinza 606060 da imagem_1d7178.png */
+    width: 78px;
+    height: 87px;
+    border: 1px solid #807979;
+}
+
+.casa-1-icon {
+    position: absolute;
+    top: 11.31px;
+    left: 9.96px;
+    width: 58.1px;
+    height: 58.1px;
+    object-fit: cover;
+    filter: brightness(0) invert(1); /* Mantém o ícone da casa branco para destacar no cinza */
+}

@@ -1,0 +1,48 @@
+
+body {
+  	margin: 0;
+  	line-height: normal;
+}
+
+
+:root {
+  	
+  	/* Common Style Variables */
+  	
+  	/* Color */
+  	--color-black: #000;
+  	--color-gainsboro: #d9d9d9;
+  	--color-goldenrod: #d4af37;
+  	--color-gray-100: rgba(0, 0, 0, 0.7);
+  	--color-gray-200: rgba(0, 0, 0, 0.26);
+  	--color-gray-300: rgba(255, 255, 255, 0.09);
+  	--color-gray-400: rgba(0, 0, 0, 0.8);
+  	--color-white: #fff;
+  	
+  	/* BorderRadius */
+  	--br-30: 30px;
+  	
+  	/* Font */
+  	--font-im-fell-english-sc: IM FELL English SC, Arial, sans-serif;
+  	--font-inika: Inika, Arial, sans-serif;
+  	--font-inter: Inter, Arial, sans-serif;
+  	
+  	/* FontSize */
+  	--fs-16: 16px;
+  	--fs-20: 20px;
+  	
+  	/* WidthHeights */
+  	--height-28: 28px;
+  	--height-29: 29px;
+  	--width-300: 300px;
+  	--width-301: 301px;
+  	
+  	/* Opacities */
+  	--opacity-0_4: 0.4;
+  	
+  	
+  	--left-0: 0px;
+  	--left-708: 708px;
+  	--top-0: 0px;
+  	
+}

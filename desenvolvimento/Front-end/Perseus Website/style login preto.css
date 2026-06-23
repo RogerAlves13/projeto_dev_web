@@ -1,0 +1,281 @@
+.desktop {
+  	width: 100%;
+  	height: 1080px;
+  	position: relative;
+  	background-color: #fff;
+  	overflow-y: auto;
+  	text-align: center;
+  	font-size: 20px;
+  	color: #d4af37;
+  	font-family: 'IM FELL English';
+}
+.desktop-inner {
+  	position: absolute;
+  	top: 208px;
+  	left: 185px;
+  	width: 878px;
+  	height: 741px;
+}
+.rectangle-parent {
+  	position: absolute;
+  	top: calc(50% - 370.5px);
+  	left: calc(50% - 439px);
+  	width: 878px;
+  	height: 741px;
+}
+.group-child {
+  	position: absolute;
+  	top: calc(50% - 370.5px);
+  	left: calc(50% - 439px);
+  	border-radius: 50px;
+  	background: linear-gradient(180deg, #333 3.37%, #000 61.06%, #666 92.64%);
+  	border: 1px solid #000;
+  	box-sizing: border-box;
+  	width: 878px;
+  	height: 741px;
+  	flex-shrink: 0;
+}
+.whatsapp-image-2026-05-08-at-2-icon {
+  	position: absolute;
+  	top: 371px;
+  	left: 30px;
+  	width: 197px;
+  	height: 131px;
+  	object-fit: cover;
+  	flex-shrink: 0;
+}
+.joo-da-siva {
+  	position: absolute;
+  	top: 49px;
+  	left: 243px;
+  	font-size: 36px;
+  	font-family: Inika;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	width: 240px;
+  	height: 34px;
+  	flex-shrink: 0;
+}
+.group-item {
+  	position: absolute;
+  	top: 134.5px;
+  	left: 261.5px;
+  	border-top: 1px solid rgba(212, 175, 55, 0.9);
+  	box-sizing: border-box;
+  	width: 522px;
+  	height: 1px;
+  	transform:  rotate(-0.1deg);
+  	transform-origin: 0 0;
+  	opacity: 0.7;
+  	flex-shrink: 0;
+}
+.nome-completo {
+  	position: absolute;
+  	top: 237px;
+  	left: 281px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	width: 235px;
+  	flex-shrink: 0;
+}
+.telefone {
+  	position: absolute;
+  	top: 402px;
+  	left: 309px;
+  	font-size: 24px;
+  	flex-shrink: 0;
+}
+.cpf {
+  	position: absolute;
+  	top: calc(50% - 56.5px);
+  	left: 312px;
+  	font-size: 24px;
+  	flex-shrink: 0;
+}
+.senha {
+  	position: absolute;
+  	top: 578px;
+  	left: 312px;
+  	font-size: 24px;
+  	flex-shrink: 0;
+}
+.joaosilvaemailcom {
+  	position: absolute;
+  	top: 94px;
+  	left: 275px;
+  	font-size: 24px;
+  	color: rgba(212, 175, 55, 0.79);
+  	text-decoration: none;
+  	flex-shrink: 0;
+}
+.group-inner {
+  	position: absolute;
+  	bottom: 0px;
+  	left: 0px;
+  	border-radius: 50px;
+  	background-color: #fff;
+  	width: 240px;
+  	height: 741px;
+  	opacity: 0.1;
+  	flex-shrink: 0;
+}
+.group-wrapper {
+  	position: absolute;
+  	top: 236px;
+  	left: 523px;
+  	width: 300px;
+  	height: 28px;
+  	flex-shrink: 0;
+  	color: rgba(212, 175, 55, 0.79);
+}
+.rectangle-group {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	width: 300px;
+  	height: 28px;
+}
+.rectangle-div {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	border-radius: 30px;
+  	background-color: rgba(255, 255, 255, 0.32);
+  	border: 1px solid rgba(255, 255, 255, 0.32);
+  	box-sizing: border-box;
+  	width: 301px;
+  	height: 29px;
+  	opacity: 0.4;
+}
+.joo-da-silva {
+  	position: absolute;
+  	top: 10.14px;
+  	left: 15.65px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	width: 267.3px;
+  	height: 8.5px;
+}
+.group-container {
+  	position: absolute;
+  	top: 309px;
+  	left: 523px;
+  	width: 300px;
+  	height: 28px;
+  	flex-shrink: 0;
+  	color: rgba(212, 175, 55, 0.79);
+  	font-family: 'Ibarra Real Nova';
+}
+.group-frame {
+  	position: absolute;
+  	top: 402px;
+  	left: 523px;
+  	width: 300px;
+  	height: 204px;
+  	flex-shrink: 0;
+  	color: rgba(212, 175, 55, 0.79);
+  	font-family: 'Ibarra Real Nova';
+}
+.group-div {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	width: 300px;
+  	height: 204px;
+}
+.div {
+  	position: absolute;
+  	top: 179px;
+  	left: 99px;
+}
+.group-wrapper2 {
+  	position: absolute;
+  	top: 498px;
+  	left: 523px;
+  	width: 300px;
+  	height: 28px;
+  	flex-shrink: 0;
+  	color: rgba(212, 175, 55, 0.79);
+}
+.group-child4 {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	border-radius: 30px;
+  	background-color: rgba(255, 255, 255, 0.37);
+  	border: 1px solid rgba(0, 0, 0, 0.8);
+  	box-sizing: border-box;
+  	width: 301px;
+  	height: 29px;
+  	opacity: 0.4;
+}
+.joo-da-silva4 {
+  	position: absolute;
+  	top: 10.14px;
+  	left: 15.65px;
+  	color: inherit;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	width: 267.3px;
+  	height: 8.5px;
+  	text-decoration: none;
+}
+.ellipse-parent {
+  	position: absolute;
+  	top: -144px;
+  	left: -144px;
+  	width: 50.5px;
+  	height: 50px;
+  	display: none;
+  	cursor: pointer;
+  	flex-shrink: 0;
+}
+.ellipse-div {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	border-radius: 50%;
+  	background-color: #d4af37;
+  	width: 50.5px;
+  	height: 50px;
+}
+.casa-1-1 {
+  	position: absolute;
+  	top: 6px;
+  	left: 7px;
+  	width: 37.5px;
+  	height: 37.5px;
+  	object-fit: cover;
+}
+.e-mail {
+  	position: absolute;
+  	top: 713px;
+  	left: 499px;
+  	font-size: 24px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	width: 110px;
+  	height: 23px;
+}
+.desktop-child {
+  	position: absolute;
+  	top: 786px;
+  	left: 708px;
+  	width: 300px;
+  	height: 28px;
+}
+.magnific-digital-illustration-icon {
+  	position: absolute;
+  	top: 302px;
+  	left: 242px;
+  	border-radius: 100px;
+  	width: 143px;
+  	height: 139px;
+  	object-fit: cover;
+}
+
