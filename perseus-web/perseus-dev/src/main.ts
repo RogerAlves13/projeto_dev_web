@@ -926,6 +926,22 @@ const chat =
     '#chat-ia'
   )
 
+  const btnFecharChat =
+  document.querySelector<HTMLButtonElement>(
+    '#fechar-chat'
+  )
+
+btnFecharChat?.addEventListener(
+  'click',
+  () => {
+
+    if (!chat) return
+
+    chat.style.display = 'none'
+
+  }
+)
+
 btnChat?.addEventListener(
   'click',
   () => {
@@ -936,6 +952,53 @@ btnChat?.addEventListener(
       chat.style.display === 'flex'
       ? 'none'
       : 'flex'
+
+  }
+)
+
+const btnMinimizarChat =
+  document.querySelector<HTMLButtonElement>(
+    '#minimizar-chat'
+  )
+
+btnMinimizarChat?.addEventListener(
+  'click',
+  () => {
+
+    const mensagens =
+      document.querySelector('#chat-mensagens')
+
+    const input =
+      document.querySelector('#chat-input-area')
+
+    if (!mensagens || !input) return
+
+    const escondido =
+      mensagens.classList.contains(
+        'chat-minimizado'
+      )
+
+    if (escondido) {
+
+      mensagens.classList.remove(
+        'chat-minimizado'
+      )
+
+      input.classList.remove(
+        'chat-minimizado'
+      )
+
+    } else {
+
+      mensagens.classList.add(
+        'chat-minimizado'
+      )
+
+      input.classList.add(
+        'chat-minimizado'
+      )
+
+    }
 
   }
 )
@@ -2215,10 +2278,18 @@ async function enviarPerguntaIA() {
   if (!pergunta) return
 
   mensagens.innerHTML += `
-    <div class="msg-usuario">
-       ${pergunta} 👤
+  <div class="linha-mensagem usuario">
+
+    <div class="balao-usuario">
+      ${pergunta}
     </div>
-  `
+
+    <div class="avatar-usuario">
+      👤
+    </div>
+
+  </div>
+`
 
   mensagens.scrollTop =
   mensagens.scrollHeight
@@ -2233,11 +2304,19 @@ async function enviarPerguntaIA() {
         {}
       )
 
-    mensagens.innerHTML += `
-      <div class="msg-ia">
-        🤖 ${resposta.resposta}
-      </div>
-    `
+  mensagens.innerHTML += `
+  <div class="linha-mensagem ia">
+
+    <div class="avatar-ia">
+      🤖
+    </div>
+
+    <div class="balao-ia">
+      ${resposta.resposta}
+    </div>
+
+  </div>
+`
 
     mensagens.scrollTop =
       mensagens.scrollHeight

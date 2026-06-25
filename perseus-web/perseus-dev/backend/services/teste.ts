@@ -1,4 +1,4 @@
-// teste.ts
+/*teste.ts
 
 import { GoogleGenAI } from "@google/genai";
 
@@ -22,3 +22,4 @@ async function testar() {
 }
 
 testar();
+*/

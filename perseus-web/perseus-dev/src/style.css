@@ -472,17 +472,131 @@ body {
 
   z-index: 9999;
 
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+
+  animation: abrirChat .25s ease;
+
 }
 
 #chat-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 14px 16px;
 
   background: #f4a11a;
 
   color: white;
 
-  padding: 15px;
+  font-weight: bold;
+
+}
+
+.chat-titulo {
+
+  font-size: 16px;
+
+}
+
+.chat-acoes {
+
+  display: flex;
+
+  gap: 8px;
+
+}
+
+#minimizar-chat,
+#fechar-chat {
+
+  width: 32px;
+
+  height: 32px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: rgba(255,255,255,.2);
+
+  color: white;
+
+  font-size: 18px;
+
+  transition: .2s;
+
+}
+
+#minimizar-chat:hover {
+
+  background: rgba(255,255,255,.35);
+
+}
+
+#fechar-chat:hover {
+
+  background: #e74c3c;
+
+}
+
+#fechar-chat {
+
+  background: transparent;
+
+  border: none;
+
+  color: white;
+
+  font-size: 22px;
+
+  cursor: pointer;
 
   font-weight: bold;
+
+  padding: 0 8px;
+
+}
+
+#fechar-chat:hover {
+
+  transform: scale(1.2);
+
+}
+
+.chat-minimizado {
+
+  display: none !important;
+
+}
+
+@keyframes abrirChat {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(.95);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+  }
 
 }
 
@@ -504,25 +618,92 @@ body {
 
 }
 
-.msg-usuario {
+/* =====================================
+   MENSAGENS CHAT
+===================================== */
+
+.linha-mensagem {
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 8px;
+
+  margin-bottom: 12px;
+
+}
+
+.linha-mensagem.usuario {
+
+  justify-content: flex-end;
+
+}
+
+.linha-mensagem.ia {
+
+  justify-content: flex-start;
+
+}
+
+.avatar-usuario,
+.avatar-ia {
+
+  width: 36px;
+
+  height: 36px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 18px;
+
+  flex-shrink: 0;
+
+}
+
+.avatar-usuario {
 
   background: #1e90ff;
 
   color: white;
 
-  padding: 12px;
+}
 
-  border-radius: 14px;
+.avatar-ia {
 
-  margin-bottom: 10px;
+  background: #f39c12;
 
-  margin-left: 100px;
-
-  text-align: right;
+  color: white;
 
 }
 
-.msg-ia {
+.balao-usuario {
+
+  max-width: 75%;
+
+  background: #1e90ff;
+
+  color: white;
+
+  padding: 12px 14px;
+
+  border-radius: 18px 18px 4px 18px;
+
+  line-height: 1.5;
+
+  word-break: break-word;
+
+}
+
+.balao-ia {
+
+  max-width: 75%;
 
   background: #fff4df;
 
@@ -530,16 +711,13 @@ body {
 
   color: #333;
 
-  padding: 12px;
+  padding: 12px 14px;
 
-  border-radius: 14px;
+  border-radius: 18px 18px 18px 4px;
 
-  margin-bottom: 10px;
+  line-height: 1.6;
 
-  margin-right: 50px;
-
-  box-shadow:
-    0 2px 8px rgba(243,156,18,.15);
+  word-break: break-word;
 
 }
 
