@@ -141,7 +141,7 @@ projeto_dev_web/
 | Alyce Mota da Silva | 424107553 |
 | Gabriel Ferreira De Lima | 924112094 |
 | João Arthur Alves de Oliveira | 924107841 |
-| João Vitor Caporrino Souza | 92410060 |
+| João Vitor Caporrino Souza | 924100660 |
 | Kathlyn Faustina de Paula Souza | 924104900 |
 | Layza Fernandes Silva | 924104679 |
 | Roger Henrique Alves Campos | 924100757 |
